@@ -240,5 +240,4 @@ bindsym $super+Tab workspace next
 bindsym $super+Shift+Tab workspace prev
 
 # change container layout (stacked, tabbed, toggle split)
-# bindsym $super+t layout tabbed
-# bindsym $super+u layout toggle split
+bindsym $super+t layout tabbed

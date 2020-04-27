@@ -1,0 +1,10 @@
+curl
+i3-gaps
+i3bar
+i3status
+kitty
+rofi
+python
+xss-lock
+i3lock-color
+xcompmgr
