@@ -1,0 +1,244 @@
+##########################################################
+###### Window Manager General
+##########################################################
+
+
+## Set Modifiers
+set $super Mod4
+set $alt Mod1
+
+font pango:Source Code Pro 12
+
+# General Window Behavior & design
+focus_on_window_activation focus
+for_window [class=".*"] border none
+no_focus [window_role="pop-up"]
+
+
+# Autostart applications
+exec --no-startup-id xss-lock --transfer-sleep-lock -- lock --nofork
+exec --no-startup-id xcompmgr -c
+
+# Define Screens
+set $screen_left HDMI-A-1
+set $screen_center DVI-D-0
+set $screen_right HDMI-A-0
+
+
+########################################
+### i3Bar Config
+########################################
+
+# Start i3bar to display a workspace bar (plus the system information i3status if available)
+bar {
+	i3bar_command i3bar
+	status_command i3status
+	
+    position bottom
+	strip_workspace_numbers yes
+    separator_symbol " "
+    tray_output none
+
+    colors {
+        background #241b2f
+        statusline #F9FAF9
+        separator  #454947
+
+#                           border  backgr. text
+        focused_workspace  #241b2f #f043de #EEE8D5
+        active_workspace   #241b2f #ed74e1 #241b2f
+        inactive_workspace #241b2f #563082 #EEE8D5
+        binding_mode       #241b2f #2C2C2C #EEE8D5
+        urgent_workspace   #241b2f #f43490 #EEE8D5
+    }
+}
+
+
+
+#############################
+### settings for i3-gaps: ###
+#############################
+
+# Set inner/outer gaps
+gaps inner 14
+gaps outer -2
+
+# Theme colors
+# class                   border  backgr. text    indic.   child_border
+  client.focused          #563082 #563082 #EEE8D5 #EEE8D5
+  client.focused_inactive #563082 #563082 #EEE8D5 #EEE8D5
+  client.unfocused        #241b2f #241b2f #EEE8D5 #EEE8D5
+  client.urgent           #985ae0 #985ae0 #EEE8D5 #EEE8D5
+  client.placeholder      #241b2f #241b2f #EEE8D5 #EEE8D5 
+
+  client.background       #ffffff
+
+
+##########################################################
+###### Workspace & Windows
+##########################################################
+
+########################################
+### Workspaces and Workspace Behavior
+########################################
+
+set $ws1 1:Browser
+set $ws2 2:Editor
+set $ws3 3:Chat
+set $ws4 4:Terminal
+set $ws5 5:Games
+set $ws6 6:Image
+set $ws7 7:Util
+set $ws8 8:Music
+set $ws9 9:Email
+set $ws10 10:Misc
+
+########################################
+### Workspace <-> Monitor Bindings
+########################################
+
+# Default bindings
+
+# Bind to left screen
+workspace $ws1 output $screen_left
+workspace $ws4 output $screen_left
+workspace $ws7 output $screen_left
+workspace $ws6 output $screen_left
+
+# bind to center screen
+workspace $ws2 output $screen_center
+workspace $ws5 output $screen_center
+workspace $ws8 output $screen_center
+
+# bind to right screen
+workspace $ws3 output $screen_right
+workspace $ws10 output $screen_right
+workspace $ws9 output $screen_right
+
+## TODO: create more workspace modes
+
+########################################
+### Window <-> Workspace Bindings
+########################################
+
+# Browser Workspace
+assign [class="firefox"] $ws1
+assign [class="Tor.*"] $ws1
+
+# Editor Workspace
+assign [class="Code"] $ws2
+
+# Chat Workspace
+assign [class="zoom"] $ws3
+assign [class="Telegram.*"] $ws3
+assign [class="discord"] $ws3
+
+# Terminal Workspace
+assign [class="kitty"] $ws4
+assign [class="urxvt"] $ws4
+
+# Games Workspace
+assign [class="Steam"] $ws5
+assign [class="Minecraft.*|minecraft.*"] $ws5
+
+# Image Workspace
+assign [class="Gimp"] $ws6
+
+# Util Workspace
+assign [class="VirtualBox Manager"] $ws7
+
+
+##########################################################
+###### Keybinds
+##########################################################
+
+########################################
+### Window Manager Controls
+########################################
+
+# reload & restart in place
+bindsym $super+Shift+c reload
+bindsym $super+Shift+r restart
+
+# Lock i3
+bindsym $super+l exec --no-startup-id lock
+
+# logout
+bindsym $super+Shift+Escape exec --no-startup-id i3exit logout
+
+########################################
+### Workspace Keybinds 
+########################################
+
+# switch to workspace
+bindsym $super+1 workspace $ws1;layout tabbed
+bindsym $super+2 workspace $ws2
+bindsym $super+3 workspace $ws3;layout tabbed
+bindsym $super+4 workspace $ws4
+bindsym $super+5 workspace $ws5;layout tabbed
+bindsym $super+6 workspace $ws6;layout tabbed
+bindsym $super+7 workspace $ws7
+bindsym $super+8 workspace $ws8
+bindsym $super+9 workspace $ws9
+bindsym $super+0 workspace $ws10;layout tabbed
+
+# move focused container to workspace
+bindsym $super+Shift+1 move container to workspace $ws1; workspace $ws1;layout tabbed
+bindsym $super+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $super+Shift+3 move container to workspace $ws3; workspace $ws3;layout tabbed
+bindsym $super+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $super+Shift+5 move container to workspace $ws5; workspace $ws5
+bindsym $super+Shift+6 move container to workspace $ws6; workspace $ws6
+bindsym $super+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym $super+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $super+Shift+9 move container to workspace $ws9; workspace $ws9
+bindsym $super+Shift+0 move container to workspace $ws10; workspace $ws10;layout tabbed
+
+
+
+########################################
+### Program Shortcuts 
+########################################
+
+# start rofi
+bindsym $super+d exec --no-startup-id "rofi -show combi -combi-modi window,run"
+
+# start a terminal
+bindsym $super+Return exec kitty
+
+
+########################################
+### Window  controls
+########################################
+
+# focus window in direction
+bindsym $super+Left focus left
+bindsym $super+Down focus down
+bindsym $super+Up focus up
+bindsym $super+Right focus right
+
+# move window to direction
+bindsym $super+Shift+Left move left
+bindsym $super+Shift+Down move down
+bindsym $super+Shift+Up move up
+bindsym $super+Shift+Right move right
+
+# Window resizing
+bindsym $super+$alt+Left resize shrink width 10 px or 10 ppt
+bindsym $super+$alt+Down resize grow height 10 px or 10 ppt
+bindsym $super+$alt+Up resize shrink height 10 px or 10 ppt
+bindsym $super+$alt+Right resize grow width 10 px or 10 ppt
+
+# toggle fullscreen mode for the focused container
+bindsym $super+f fullscreen toggle
+
+# kill focused window
+bindsym $super+Shift+q kill
+
+#navigate workspaces next / previous
+bindsym $super+Tab workspace next
+bindsym $super+Shift+Tab workspace prev
+
+# change container layout (stacked, tabbed, toggle split)
+# bindsym $super+t layout tabbed
+# bindsym $super+u layout toggle split
