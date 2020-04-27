@@ -1,0 +1,5 @@
+# mount the Games Drive
+sudo mount /dev/sdb1 /run/media/emma/Games
+
+# set background
+feh --bg-scale ~/Pictures/wallpapers/cyberpunk1.jpg
