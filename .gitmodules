@@ -1,0 +1,3 @@
+[submodule ".scripts/expandable-quotes-script"]
+	path = .scripts/expandable-quotes-script
+	url = git@github.com:Dragonsight91/expandable-quotes-script.git
