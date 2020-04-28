@@ -29,7 +29,7 @@ The fonts used here sre not mine, but they are freely Available. I will later re
 
     # install normal packages available on a package manager
     # here: pacman, replace "pacman -S" with your equivalent, like "apt-get install"
-    sudo pacman -S curl i3-gaps i3status kitty rofi python xss-lock xcompmgr feh
+    sudo pacman -S curl i3-gaps i3status kitty rofi python xss-lock xcompmgr feh zsh i3lock-color
 
     # install betterdiscord
     curl -O https://raw.githubusercontent.com/bb010g/betterdiscordctl/master/betterdiscordctl
