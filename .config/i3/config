@@ -153,7 +153,7 @@ assign [class="VirtualBox Manager"] $ws7
 ##########################################################
 
 ########################################
-### Window Manager Controls
+### General Controls
 ########################################
 
 # reload & restart in place
@@ -165,6 +165,10 @@ bindsym $super+l exec --no-startup-id lock
 
 # logout
 bindsym $super+Shift+Escape exec --no-startup-id i3exit logout
+
+# volume control
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 
 ########################################
 ### Workspace Keybinds 
