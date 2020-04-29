@@ -104,11 +104,12 @@ workspace $ws1 output $screen_left
 workspace $ws4 output $screen_left
 workspace $ws7 output $screen_left
 workspace $ws6 output $screen_left
+workspace $ws8 output $screen_left
 
 # bind to center screen
 workspace $ws2 output $screen_center
 workspace $ws5 output $screen_center
-workspace $ws8 output $screen_center
+
 
 # bind to right screen
 workspace $ws3 output $screen_right
@@ -147,6 +148,14 @@ assign [class="Gimp"] $ws6
 # Util Workspace
 assign [class="VirtualBox Manager"] $ws7
 
+# Music Workspace
+for_window [class="Spotify"] move to workspace $ws8
+
+# Email Workspace
+assign [class="Mail|Thunderbird"] $ws9
+
+# Misc Workspace
+
 
 ##########################################################
 ###### Keybinds
@@ -175,16 +184,16 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 ########################################
 
 # switch to workspace
-bindsym $super+1 workspace $ws1;layout tabbed
-bindsym $super+2 workspace $ws2
-bindsym $super+3 workspace $ws3;layout tabbed
-bindsym $super+4 workspace $ws4
-bindsym $super+5 workspace $ws5;layout tabbed
-bindsym $super+6 workspace $ws6;layout tabbed
-bindsym $super+7 workspace $ws7
-bindsym $super+8 workspace $ws8
-bindsym $super+9 workspace $ws9
-bindsym $super+0 workspace $ws10;layout tabbed
+bindsym $super+mod2+KP_1 workspace $ws1;layout tabbed
+bindsym $super+mod2+KP_2 workspace $ws2
+bindsym $super+mod2+KP_3 workspace $ws3;layout tabbed
+bindsym $super+mod2+KP_4 workspace $ws4
+bindsym $super+mod2+KP_5 workspace $ws5;layout tabbed
+bindsym $super+mod2+KP_6 workspace $ws6;layout tabbed
+bindsym $super+mod2+KP_7 workspace $ws7
+bindsym $super+mod2+KP_8 workspace $ws8
+bindsym $super+mod2+KP_9 workspace $ws9
+bindsym $super+mod2+KP_0 workspace $ws10;layout tabbed
 
 # move focused container to workspace
 bindsym $super+Shift+1 move container to workspace $ws1; workspace $ws1;layout tabbed
@@ -197,7 +206,6 @@ bindsym $super+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $super+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym $super+Shift+9 move container to workspace $ws9; workspace $ws9
 bindsym $super+Shift+0 move container to workspace $ws10; workspace $ws10;layout tabbed
-
 
 
 ########################################

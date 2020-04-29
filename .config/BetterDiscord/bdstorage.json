@@ -37,7 +37,6 @@
             },
             "plugins": {},
             "themes": {
-                "Material_Discord": false,
                 "Discord Cyberpunk Neon": true
             }
         },
