@@ -4,8 +4,8 @@
 
 
 ## Set Modifiers
-set $super Mod4
-set $alt Mod1
+set $mod_main Mod1
+set $alt Control_L
 
 font pango:Source Code Pro 12
 
@@ -179,14 +179,14 @@ assign [class=".hotcut"] $ws11
 ########################################
 
 # reload & restart in place
-bindsym $super+Shift+c reload
-bindsym $super+Shift+r restart
+bindsym $mod_main+Shift+c reload
+bindsym $mod_main+Shift+r restart
 
 # Lock i3
-bindsym $super+l exec --no-startup-id lock
+bindsym $mod_main+l exec --no-startup-id lock3
 
 # logout
-bindsym $super+Shift+Escape exec --no-startup-id i3exit logout
+bindsym $mod_main+Shift+Escape exec --no-startup-id i3exit logout
 
 # volume control
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
@@ -197,30 +197,30 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 ########################################
 
 # switch to workspace
-bindsym $super+1 workspace $ws1;layout tabbed
-bindsym $super+2 workspace $ws2
-bindsym $super+3 workspace $ws3;layout tabbed
-bindsym $super+4 workspace $ws4
-bindsym $super+5 workspace $ws5;layout tabbed
-bindsym $super+6 workspace $ws6;layout tabbed
-bindsym $super+7 workspace $ws7
-bindsym $super+8 workspace $ws8
-bindsym $super+9 workspace $ws9
-bindsym $super+0 workspace $ws10;layout tabbed
-bindsym $super+plus workspace $ws11
+bindsym $mod_main+1 workspace $ws1;layout tabbed
+bindsym $mod_main+2 workspace $ws2
+bindsym $mod_main+3 workspace $ws3;layout tabbed
+bindsym $mod_main+4 workspace $ws4
+bindsym $mod_main+5 workspace $ws5;layout tabbed
+bindsym $mod_main+6 workspace $ws6;layout tabbed
+bindsym $mod_main+7 workspace $ws7
+bindsym $mod_main+8 workspace $ws8
+bindsym $mod_main+9 workspace $ws9
+bindsym $mod_main+0 workspace $ws10;layout tabbed
+bindsym $mod_main+plus workspace $ws11
 
 # move focused container to workspace
-bindsym $super+Shift+1 move container to workspace $ws1; workspace $ws1;layout tabbed
-bindsym $super+Shift+2 move container to workspace $ws2; workspace $ws2
-bindsym $super+Shift+3 move container to workspace $ws3; workspace $ws3;layout tabbed
-bindsym $super+Shift+4 move container to workspace $ws4; workspace $ws4
-bindsym $super+Shift+5 move container to workspace $ws5; workspace $ws5;layout tabbed
-bindsym $super+Shift+6 move container to workspace $ws6; workspace $ws6;layout tabbed
-bindsym $super+Shift+7 move container to workspace $ws7; workspace $ws7
-bindsym $super+Shift+8 move container to workspace $ws8; workspace $ws8
-bindsym $super+Shift+9 move container to workspace $ws9; workspace $ws9
-bindsym $super+Shift+0 move container to workspace $ws10; workspace $ws10;layout tabbed
-bindsym $super+Shift+plus move container to workspace $ws11; workspace $ws11
+bindsym $mod_main+Shift+1 move container to workspace $ws1; workspace $ws1;layout tabbed
+bindsym $mod_main+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod_main+Shift+3 move container to workspace $ws3; workspace $ws3;layout tabbed
+bindsym $mod_main+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod_main+Shift+5 move container to workspace $ws5; workspace $ws5;layout tabbed
+bindsym $mod_main+Shift+6 move container to workspace $ws6; workspace $ws6;layout tabbed
+bindsym $mod_main+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod_main+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod_main+Shift+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod_main+Shift+0 move container to workspace $ws10; workspace $ws10;layout tabbed
+bindsym $mod_main+Shift+plus move container to workspace $ws11; workspace $ws11
 
 
 ########################################
@@ -228,10 +228,10 @@ bindsym $super+Shift+plus move container to workspace $ws11; workspace $ws11
 ########################################
 
 # start rofi
-bindsym $super+d exec --no-startup-id "rofi -show combi -combi-modi window,run"
+bindsym $mod_main+d exec --no-startup-id "rofi -show combi -combi-modi window,run"
 
 # start a terminal
-bindsym $super+Return exec kitty
+bindsym $mod_main+Return exec kitty
 
 
 ########################################
@@ -239,32 +239,32 @@ bindsym $super+Return exec kitty
 ########################################
 
 # focus window in direction
-bindsym $super+Left focus left
-bindsym $super+Down focus down
-bindsym $super+Up focus up
-bindsym $super+Right focus right
+bindsym $mod_main+Left focus left
+bindsym $mod_main+Down focus down
+bindsym $mod_main+Up focus up
+bindsym $mod_main+Right focus right
 
 # move window to direction
-bindsym $super+Shift+Left move left
-bindsym $super+Shift+Down move down
-bindsym $super+Shift+Up move up
-bindsym $super+Shift+Right move right
+bindsym $mod_main+Shift+Left move left
+bindsym $mod_main+Shift+Down move down
+bindsym $mod_main+Shift+Up move up
+bindsym $mod_main+Shift+Right move right
 
 # Window resizing
-bindsym $super+$alt+Left resize shrink width 10 px or 10 ppt
-bindsym $super+$alt+Down resize grow height 10 px or 10 ppt
-bindsym $super+$alt+Up resize shrink height 10 px or 10 ppt
-bindsym $super+$alt+Right resize grow width 10 px or 10 ppt
+bindsym $mod_main+$alt+Left resize shrink width 10 px or 10 ppt
+bindsym $mod_main+$alt+Down resize grow height 10 px or 10 ppt
+bindsym $mod_main+$alt+Up resize shrink height 10 px or 10 ppt
+bindsym $mod_main+$alt+Right resize grow width 10 px or 10 ppt
 
 # toggle fullscreen mode for the focused container
-bindsym $super+f fullscreen toggle
+bindsym $mod_main+f fullscreen toggle
 
 # kill focused window
-bindsym $super+Shift+q kill
+bindsym $mod_main+Shift+q kill
 
 #navigate workspaces next / previous
-bindsym $super+Tab workspace next
-bindsym $super+Shift+Tab workspace prev
+bindsym $mod_main+Tab workspace next
+bindsym $mod_main+Shift+Tab workspace prev
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $super+t layout tabbed
+bindsym $mod_main+t layout tabbed

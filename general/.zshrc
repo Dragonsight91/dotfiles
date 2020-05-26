@@ -1,8 +1,8 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/emma/.oh-my-zsh"
+export ZSH="/home/${USER}/.oh-my-zsh"
 ZSH_THEME="agnoster"
 
 ######################
@@ -23,8 +23,9 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+
 # load autojump
-[[ -s /home/emma/.autojump/etc/profile.d/autojump.sh ]] && source /home/emma/.autojump/etc/profile.d/autojump.sh
+[[ -s /home/$USER/.autojump/etc/profile.d/autojump.sh ]] && source /home/$USER/.autojump/etc/profile.d/autojump.sh
 autoload -U compinit && compinit -u
 
 # Compilation flags
@@ -52,6 +53,7 @@ alias nani="echo 'おまえ は もう しんでいる';echo '何？'"
 alias sudo="sudo "
 alias spotify-adblock="LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify"
 alias zip="zip -r "
+alias rpi-ssh="ssh -l pi 192.168.20.11"
 
 
 ######################
