@@ -95,7 +95,7 @@ The fonts used here sre not mine, but they are freely Available.
 ## Shortcuts
 
 The main modifier used is <kbd>Super</kbd>. this can be changed on the top of the i3 config, by setting `$mod_main`.
-**WARNING** if you set `$mod_main` 
+**WARNING** if you set `$mod_main` to <kbd>Alt</kbd>, you have to change the modifier for `$alt` as well.
 
 ### General controls
 - <kbd>Super + L</kbd> - spawn i3-lock
