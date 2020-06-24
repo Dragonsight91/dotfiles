@@ -92,5 +92,31 @@ The fonts used here sre not mine, but they are freely Available.
     cp -r bin/* ~/.local/bin/
     cp -r general/* ~/
     ```
+## Shortcuts
+
+The main modifier used is <kbd>Super</kbd>. this can be changed on the top of the i3 config, by setting `$mod_main`.
+**WARNING** if you set `$mod_main` 
+
+### General controls
+- <kbd>Super + L</kbd> - spawn i3-lock
+- <kbd>Super + D</kbd> - spawn rofi
+- <kbd>Super + Enter</kbd> - start Kitty
+- <kbd>Super + {NUMBER}</kbd> - Switch to workspace
+- <kbd>Super + Shift +{NUMBER}</kbd> - move focused window to workspace
+- <kbd>Super + +</kbd> - Switch to video workspace
+- <kbd>Super + Tab</kbd> - Switch to next open workspace
+- <kbd>Super + Shift + Tab</kbd> - Switch to previous open workspace
+- <kbd>Super + Shift + +</kbd> - move focused window to video workspace
+- <kbd>Super + Shift + Esc</kbd> - Log out
+- <kbd>Super + Shift + C</kbd> - reload i3 config
+- <kbd>Super + Shift + R</kbd> - restart i3 in place
 
 
+
+### window controls
+- <kbd>Super + {ARROW}</kbd> - focus window 
+- <kbd>Super + Shift + {ARROW}</kbd> - move window 
+- <kbd>Super + Alt + {ARROW}</kbd> - resize window
+- <kbd>Super + Shift + Q</kbd> - kill focused window
+- <kbd>Super + F</kbd> - toggle fullscreen
+- <kbd>Super + T</kbd> - toggle tabbed layout

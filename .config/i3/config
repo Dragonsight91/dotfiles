@@ -21,7 +21,7 @@ floating_maximum_size 1000 x 700
 for_window [class="Nemo"] floating enable
 
 # Autostart applications
-#exec --no-startup-id dockd --daemon
+
 exec --no-startup-id xss-lock --transfer-sleep-lock -- lock --nofork
 exec --no-startup-id picom 
 exec --no-startup-id nm-applet
