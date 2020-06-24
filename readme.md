@@ -1,15 +1,18 @@
 # Dragonsight91's Dotfiles
-
+This is the repository and a manual on how to replicate my exact setup.
 The fonts used here sre not mine, but they are freely Available.
 
 ## Dependencies
 
 | Name            |           description         |
 |-----------------|-------------------------------|
+| `git`           | you want the dotfiles, right? easiest way to get it is git|
 | `curl`          | command line tool and library for transferring data with URLs. |
 | `i3-gaps`       | The Window Manager |
 | `i3status`      | gives status info on i3bar |
+| `nemo`          | The file manager i use |
 | `feh`           | an application that sets the background image |
+| `nomacs`        | An image viewer that also has basic editing features|
 | `kitty`         | A nice looking Terminal |
 | `rofi`          | A dmenu that is better than the default i3 dmenu |
 | `python`        | the Python Language Interpreter |
@@ -30,8 +33,8 @@ The fonts used here sre not mine, but they are freely Available.
     ```bash
 
     # install normal packages available on a package manager
-    # here: pacman, replace "pacman -S" with your equivalent, like "apt-get install"
-    sudo yay -S curl i3-gaps i3status kitty rofi python xss-lock picom feh zsh i3lock-color discord
+    # here: pacman, replace "yay -S" with your equivalent, like "apt-get install"
+    sudo pacman -S curl i3-gaps i3status kitty rofi python xss-lock picom feh zsh i3lock-color discord git nemo nomacs
 
     # install betterdiscord
     curl -O https://raw.githubusercontent.com/bb010g/betterdiscordctl/master/betterdiscordctl
@@ -120,3 +123,75 @@ The main modifier used is <kbd>Super</kbd>. this can be changed on the top of th
 - <kbd>Super + Shift + Q</kbd> - kill focused window
 - <kbd>Super + F</kbd> - toggle fullscreen
 - <kbd>Super + T</kbd> - toggle tabbed layout
+
+## How does this work?
+
+Everything works based on the i3 workspaces. All the programs i use are assigned to a workspace. In workspaces where i have multiple windows, i switch to tabbed layout.
+This way you can easily use the space efficiently. When i have more than one monitor, i assign workspaces to monitors, making this compatible with both multhihead setups as well as laptop Setups (i use it on both).
+
+### The Window bindin
+This is a list of all applications and workspaces and where you can expect things to go. Apart from the Video workspace (which uses <kbd>Super + +</kbd> to switch), you can expect these numbers to be the actual number used to swoitch to that workspace.
+
+0. **Misc**
+    
+    This workspace is mostly for settings and config applications
+    - pavucontrol
+    - barrier
+    - blueberry
+
+1. **Browser**
+
+    As the name suggests, this workspace gets all the browser action.
+    - Firefox
+    - Tor Browser
+2. **Editor**
+
+    This workspace holds all the editors i need for projects. 
+    - vscode
+    - Unreal Engine 4 Editor
+3. **Chat**
+
+    This workspace is for all the social media and communication stuff
+    - Telegram Desktop
+    - Discord
+    - Zoom
+4. **Terminal**
+
+    Any terminal goes here. Why? it's transparent and i really hate floating windows 
+    - Kitty
+    - urxvt
+5. **Games**
+    
+    All the gaming stuff, will later bind more things, like lutris.
+    - Steam
+    - Minecraft
+6. Image
+
+    All the image viewing and editing stuff. Since i don't have a better program than gimp, that's all i have inediting.
+    - Gimp
+    - nomacs
+7. **Util**
+
+    All the utilitiesthat i occasionally use. this is kept seperate from image and video, because these are more general utilities which also don't like running in half-width windows.
+    - Virtual Box
+    - obs
+    - Filezilla
+    - Wireshark
+8. Music
+
+    All the music playing and audio editing things. may also include 
+    - Spotify
+    - Audacity
+9. Email
+
+    Emails, that's it. just thunderbird. but i don't like thunderbird being half-width.
+    - Thunderbird
+10. **Video**
+    
+    This is a special workspace for video editing and playback software.
+    This is the only workspace that doesn't use any number, but <kbd>+</kbd> as its identifier.
+    - vlc
+    - mpv
+    - shotcut
+    - kdenlive
+    - blender
