@@ -1,3 +1,4 @@
+#!/usr/bin/python3.8
 import os,sys
 
 #Nativefier Setup
@@ -27,13 +28,9 @@ else:
 
 # make new dir
 if(verbose):
-    os.system(f"sudo mkdir -v /usr/bin/{name}")
     os.system(f"sudo mv -v {name}-linux-x64 /usr/bin/{name}")
 else:
-    os.system(f"sudo mkdir /usr/bin/{name}")
     os.system(f"sudo mv {name}-linux-x64 /usr/bin/{name}")
 
-# create app link
-#path = f"/home/{os.getenv('USER')}/.local/share/applications/{name}.desktop"
-#if(verbose):
-#    print(path)
+os.system(f'rm /home/{os.environ["USER"]}/.local/bin/{name}')
+os.system(f"ln -s /usr/bin/{name}/{name} /home/{os.environ['USER']}/.local/bin/{name}")

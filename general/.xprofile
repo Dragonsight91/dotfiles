@@ -1,5 +1,3 @@
-# set background
+xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
 feh --bg-scale ~/Pictures/wallpapers/cyberpunk1.jpg
-
-# create audio routes
-mic-loopback
+export PATH=$PATH:/home/$USER/bin

@@ -15,11 +15,13 @@ The fonts used here sre not mine, but they are freely Available. I will later re
 | `python`        | the Python Language Interpreter |
 | `xss-lock`      | a tool that automatically locks the screen on inactivity |
 | `i3lock-color`  | a better version of i3lock, a screen locker |
-| `xcompmgr`      | Extra compositor that enables transparency in the terminal  |
+| `picom`         | Extra compositor that enables transparency in the terminal  |
 | `betterdiscord` | enables discord themes |
+| `discord`       | i don't think this needs an introduction|
 | `zsh`           | a nicer looking shell with extra functions |
 | `oh-my-zsh`     | an even better way to theme zsh |
 | `zsh-autojump`  | a plugin that allows using `j [Dirname]` to jump to any directory, as long as you previously visited that directory (say i'm in `/` and i wanna get to `/home/$USER/Documents`, just type `j Doc` and it jumps there.)
+| `k` | A plugin for zsh that makes the ls look better
 
 ## Setup
 
@@ -29,7 +31,7 @@ The fonts used here sre not mine, but they are freely Available. I will later re
 
     # install normal packages available on a package manager
     # here: pacman, replace "pacman -S" with your equivalent, like "apt-get install"
-    sudo pacman -S curl i3-gaps i3status kitty rofi python xss-lock xcompmgr feh zsh i3lock-color
+    sudo yay -S curl i3-gaps i3status kitty rofi python xss-lock picom feh zsh i3lock-color discord
 
     # install betterdiscord
     curl -O https://raw.githubusercontent.com/bb010g/betterdiscordctl/master/betterdiscordctl
@@ -44,6 +46,8 @@ The fonts used here sre not mine, but they are freely Available. I will later re
     git clone git://github.com/wting/autojump.git
     cd autojump
     ./install.py or ./uninstall.py
+
+
 
     ```
 
@@ -83,8 +87,10 @@ The fonts used here sre not mine, but they are freely Available. I will later re
     mkdir ~/.local/bin
 
     # move all the files
-    cp .config/* ~/.config/
-    cp .fonts/* ~/.fonts/
-    cp bin/* ~/.local/bin/
-    cp general/* ~/
+    cp -r .config/* ~/.config/
+    cp -r .fonts/* ~/.fonts/
+    cp -r bin/* ~/.local/bin/
+    cp -r general/* ~/
     ```
+
+
