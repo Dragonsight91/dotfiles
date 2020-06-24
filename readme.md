@@ -1,6 +1,6 @@
 # Dragonsight91's Dotfiles
 
-The fonts used here sre not mine, but they are freely Available. I will later reference the original sources
+The fonts used here sre not mine, but they are freely Available.
 
 ## Dependencies
 
