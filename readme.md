@@ -45,12 +45,13 @@ The fonts used here sre not mine, but they are freely Available.
     #install oh-my-zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-    # install autojump
+    # install autojump plugin
     git clone git://github.com/wting/autojump.git
     cd autojump
-    ./install.py or ./uninstall.py
+    ./install.py
 
-
+    # install k plugin
+    git clone https://github.com/supercrabtree/k $ZSH_CUSTOM/plugins/k
 
     ```
 
