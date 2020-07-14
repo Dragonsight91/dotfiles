@@ -1,0 +1,11 @@
+"xdotool key F20"
+  b:10
+
+"xdotool key F21"
+  b:11
+
+"xdotool key F22"
+  b:12
+
+"xdotool key F23"
+  b:13

@@ -26,6 +26,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- lock --nofork
 exec --no-startup-id picom 
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
+exec --no-startup-id xbindkeys
 
 # Define Screens
 set $screen_internal eDP1

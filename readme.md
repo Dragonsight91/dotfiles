@@ -34,7 +34,7 @@ The fonts used here sre not mine, but they are freely Available.
 
     # install normal packages available on a package manager
     # here: pacman, replace "yay -S" with your equivalent, like "apt-get install"
-    sudo pacman -S curl i3-gaps i3status kitty rofi python xss-lock picom feh zsh i3lock-color discord git nemo nomacs
+    sudo pacman -S curl i3-gaps i3status kitty rofi python xss-lock picom feh zsh i3lock-color discord git nemo nomacs xf86-input-wacom xbindkeys xdotool
 
     # install betterdiscord
     curl -O https://raw.githubusercontent.com/bb010g/betterdiscordctl/master/betterdiscordctl
