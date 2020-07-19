@@ -1,0 +1,93 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        colors = true
+        interval = 1
+        output_format = "i3bar"
+        markup = pango
+}
+
+
+#order += "cpu_usage"
+#order += "memory"
+order += "disk /"
+order += "ethernet enp0s31f6"
+order += "wireless wlp4s0"
+order += "wireless wwp0s20f0u3c3"
+order += "battery 0"
+order += "battery 1"
+order += "volume master"
+order += "tztime local"
+
+cpu_usage {
+        format = "<span background='#f04371' foreground='black'>  </span><span background='#563082' foreground='white'>  %usage  </span> "
+}
+memory {
+        format = "<span foreground='black' background='#eb5ee1' >  </span><span background='#563082' foreground='white'> %used </span>"
+}
+
+disk "/" {
+        format = "<span background='#a3f7e4' foreground='black'>  </span><span background='#563082' foreground='white'>  %avail  </span>"
+}
+
+ethernet enp0s31f6 {
+        # if you use %speed, i3status requires root privileges
+        format_up = "<span background='#6ef077' foreground='black'>  </span><span background='#563082' foreground='white'> %ip </span> "
+        format_down = ""
+}
+wireless  wlp4s0{
+        # if you use %speed, i3status requires root privileges
+        format_up = "<span background='#6ef077' foreground='black'> 直 </span><span background='#563082' foreground='white'> %ip </span> "
+        format_down = ""
+}
+
+wireless wwp0s20f0u3c3 {
+      # if you use %speed, i3status requires root privileges
+        format_up = "<span background='#6ef077' foreground='black'> 📶 </span>"
+        format_down = ""  
+}
+
+tztime local {
+        # format = "%Y-%m-%d %H:%M:%S"
+        format_time = "%a %d %b %H:%M"
+        format = "<span background='#f3ff70' foreground='black'>  </span><span background='#563082' foreground='white'> %time </span>"
+}
+
+battery 0 {
+        format = "<span background='#6ef077' foreground='black'> %status </span><span background='#563082' foreground='white'> %percentage </span>"
+        format_down = ""
+        status_chr  = ""
+        status_bat  = ""
+        status_unk  = ""
+        status_full = ""
+        path = "/sys/class/power_supply/BAT0/uevent"
+        low_threshold = 10
+        last_full_capacity = true
+        integer_battery_capacity = true
+}
+
+battery 1 {
+        format = "<span background='#6ef077' foreground='black'> %status </span><span background='#563082' foreground='white'> %percentage </span>"
+        format_down = ""
+        status_chr  = ""
+        status_bat  = ""
+        status_unk  = ""
+        status_full = ""
+        path        = "/sys/class/power_supply/BAT1/uevent"
+        low_threshold = 10
+        integer_battery_capacity = true
+        last_full_capacity = true
+}
+volume master {
+        format = "<span background='#6ef077' foreground='black'> 墳 </span><span background='#563082' foreground='white'> %volume </span>"
+        format_muted = "<span background='#f04371' foreground='black'> 婢 </span>"
+        device = "pulse"
+        mixer = "Master"
+        mixer_idx = 0
+}
