@@ -1,0 +1,25 @@
+#############################
+###        OPTIONS        ###
+#############################
+
+set afterends
+set autoindent
+set brackets ""')>]}"
+set jumpyscrolling
+set linenumbers
+set matchbrackets "(<[{)>]}"
+set tabsize 4
+set tabstospaces
+
+##############################
+###         COLORS         ###
+##############################
+
+set titlecolor brightwhite,magenta
+set statuscolor brightwhite,magenta
+set errorcolor brightwhite,red
+set selectedcolor brightwhite,magenta
+set stripecolor ,magenta
+set numbercolor brightwhite
+set keycolor magenta
+set functioncolor brightwhite
