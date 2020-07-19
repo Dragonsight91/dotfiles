@@ -15,6 +15,8 @@ set tabstospaces
 ###         COLORS         ###
 ##############################
 
+# UI COLORS
+
 set titlecolor brightwhite,magenta
 set statuscolor brightwhite,magenta
 set errorcolor brightwhite,red
@@ -23,3 +25,6 @@ set stripecolor ,magenta
 set numbercolor brightwhite
 set keycolor magenta
 set functioncolor brightwhite
+
+# Syntax Highlighting
+include "/usr/share/nano/*.nanorc"
