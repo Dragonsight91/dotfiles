@@ -2,6 +2,8 @@
 This is the repository and a manual on how to replicate my exact setup.
 The fonts used here sre not mine, but they are freely Available.
 
+![A Screenshot with my dotfiles and background image](image/screenshot_dotfiles.png)
+
 ## Dependencies
 
 | Name            |           description         |
@@ -33,7 +35,7 @@ The fonts used here sre not mine, but they are freely Available.
     ```bash
 
     # install normal packages available on a package manager
-    # here: pacman, replace "yay -S" with your equivalent, like "apt-get install"
+    # here: pacman, replace "pacman -S" with your equivalent, like "apt-get install"
     sudo pacman -S curl i3-gaps i3status kitty rofi python xss-lock picom feh zsh i3lock-color discord git nemo nomacs xf86-input-wacom xbindkeys xdotool
 
     # install betterdiscord
@@ -60,9 +62,9 @@ The fonts used here sre not mine, but they are freely Available.
     ```bash
     # cheaply copy everything that may be replaced by these files
     mkdir ~/.backup
-    cp ~/.config/* ~/.backup
-    cp ~/.xprofile ~/.backup
-    cp ~/.zshrc ~/.backup
+    cp -r ~/.config/* ~/.backup
+    cp -r ~/.xprofile ~/.backup
+    cp -r ~/.zshrc ~/.backup
     ```
 
 3. install the dotfiles
