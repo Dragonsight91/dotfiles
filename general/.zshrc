@@ -3,7 +3,10 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/${USER}/.oh-my-zsh"
+export ID=92873481236524716398128273
+export MAIN_PC=emma@192.168.20.204
 ZSH_THEME="agnoster"
+
 
 ######################
 ### PLUGIN LOADING ###
