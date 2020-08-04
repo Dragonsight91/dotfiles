@@ -2,3 +2,4 @@
 **/bdstorage.json
 **/*.log
 **/.vscode
+*.save

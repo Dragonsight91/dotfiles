@@ -24,7 +24,7 @@ for_window [class="Nemo"] floating enable
 
 exec --no-startup-id xss-lock --transfer-sleep-lock -- lock --nofork
 exec --no-startup-id picom 
-exec --no-startup-id nm-applet
+#exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id xbindkeys
 
@@ -105,9 +105,7 @@ set $ws11 11:Video
 ### Workspace <-> Monitor Bindings
 ########################################
 
-# Default bindings
-
-## TODO: create more workspace bindings for dock mode
+# TODO: create dock bindings
 
 ########################################
 ### Window <-> Workspace Bindings
@@ -156,6 +154,7 @@ assign [class="Mail|Thunderbird"] $ws9
 assign [class="Pavucontrol"] $ws10
 assign [class=".*lueberry.py"] $ws10
 assign [class=".*arrier"] $ws10
+assign [class=".odem-manager-gui"] $ws10
 
 ###### SPECIAL WORKSPACES ######
 
