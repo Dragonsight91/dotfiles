@@ -3,8 +3,8 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/${USER}/.oh-my-zsh"
-export ID=92873481236524716398128273
-export MAIN_PC=emma@192.168.20.204
+export ID=92873481236524716398128273 	# some random number
+export MAIN_PC=emma@192.168.20.204 		# my main PC's SSH details
 ZSH_THEME="agnoster"
 
 

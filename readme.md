@@ -132,7 +132,7 @@ The main modifier used is <kbd>Super</kbd>. this can be changed on the top of th
 Everything works based on the i3 workspaces. All the programs i use are assigned to a workspace. In workspaces where i have multiple windows, i switch to tabbed layout.
 This way you can easily use the space efficiently. When i have more than one monitor, i assign workspaces to monitors, making this compatible with both multhihead setups as well as laptop Setups (i use it on both).
 
-### The Window bindin
+### The Window bindings
 This is a list of all applications and workspaces and where you can expect things to go. Apart from the Video workspace (which uses <kbd>Super + +</kbd> to switch), you can expect these numbers to be the actual number used to swoitch to that workspace.
 
 0. **Misc**
@@ -141,17 +141,21 @@ This is a list of all applications and workspaces and where you can expect thing
     - pavucontrol
     - barrier
     - blueberry
+    - modem-manager-gui
+
 
 1. **Browser**
 
     As the name suggests, this workspace gets all the browser action.
     - Firefox
     - Tor Browser
+
 2. **Editor**
 
     This workspace holds all the editors i need for projects. 
     - vscode
     - Unreal Engine 4 Editor
+
 3. **Chat**
 
     This workspace is for all the social media and communication stuff
@@ -163,16 +167,19 @@ This is a list of all applications and workspaces and where you can expect thing
     Any terminal goes here. Why? it's transparent and i really hate floating windows 
     - Kitty
     - urxvt
+
 5. **Games**
     
     All the gaming stuff, will later bind more things, like lutris.
     - Steam
     - Minecraft
+
 6. Image
 
     All the image viewing and editing stuff. Since i don't have a better program than gimp, that's all i have inediting.
     - Gimp
     - nomacs
+
 7. **Util**
 
     All the utilitiesthat i occasionally use. this is kept seperate from image and video, because these are more general utilities which also don't like running in half-width windows.
@@ -180,15 +187,18 @@ This is a list of all applications and workspaces and where you can expect thing
     - obs
     - Filezilla
     - Wireshark
+
 8. Music
 
     All the music playing and audio editing things. may also include 
     - Spotify
     - Audacity
+
 9. Email
 
     Emails, that's it. just thunderbird. but i don't like thunderbird being half-width.
     - Thunderbird
+    
 10. **Video**
     
     This is a special workspace for video editing and playback software.
