@@ -1,12 +1,20 @@
 #!/bin/bash
 
-# save the device name
+########################
+###    Input Args    ###
+########################
+
 DEV_NAME="${2}"
 MODE="${1}"
 
-function help {
+##################################
+###    Define all functions    ###
+##################################
+
+# help function, just displays howto use this
+function help() {
     echo "USAGE:"
-    echo "    bt-connect [command] [device name]"
+    echo "    bt-connect <command> <device name>"
     echo ""
     echo "COMMANDS:"
     echo "    connect    - Connect to (and pair) a bluetooth device"
@@ -16,94 +24,170 @@ function help {
     echo "    A string that matches part of the device's bluetooth name."
 }
 
-function err {
-    echo -e "[\e[31mERR\e[0m] ${1}"
+# error, log and success functions for nicer looking messages
+function err() {
+    echo -e "[\e[31mERR\e[0m] \e[1m${1}\e[0m"
 }
 
-function log {
+function log() {
     echo -e "[\e[93mLOG\e[0m] \e[1m${1}\e[0m"
 }
 
-function suc {
+function suc() {
     echo -e "[\e[92mSUC\e[0m] \e[1m${1}\e[0m"
 }
+
+# a function to get all the device data
+function get_dev() {
+    # get full device name and  MAC of the device
+    DEV=$(bt-device -l | grep "${DEV_NAME}" | head -n 1)
+    DEV_MAC=$(echo ${DEV} | awk 'BEGIN { FS="[ ]" } ; { print $NF }' | sed "s/(\|)//g")
+    DEV_FULL_NAME=$(echo ${DEV} | awk 'BEGIN { FS="[ ]" } ; { $NF=""; print $0;  }' | sed "s/(\|)//g")
+
+    # if the mac address hasn't been found, exit
+    if [[ -z "${DEV_MAC}" ]]; then
+
+        err "Device \e[35m${DEV_NAME}\e[0m \e[1mcould not be found"
+
+    fi
+}
+
+#########################
+###    Main Script    ###
+#########################
+
 if [[ -z "${MODE}" ]]; then
-    help
+    help # just display the help message if the user didn't set a mode
 else
+
+    ##############################
+    ###    Connect Handling    ###
+    ##############################
+
     if [[ "${MODE}" == "connect" ]]; then
+
         if [[ -z "${DEV_NAME}" ]]; then
+
+            #User didn't specify the device
             err "Device not specified.\e[0m"
+            help
+
         else
-            # scan
-            coproc bluetoothctl
-            log "Waiting for device..."
-            echo "scan on" >&"${COPROC[1]}"
-            grep -q "${DEV_NAME}" <&"${COPROC[0]}"
-            pkill $COPROC_PID
 
-            # get full device name and  MAC
-            DEV=$(bt-device -l | grep "${DEV_NAME}" | head -n 1)
-            DEV_MAC=$(echo ${DEV} | awk 'BEGIN { FS="[ ]" } ; { print $NF }'| sed "s/(\|)//g")
-            DEV_FULL_NAME=$(echo ${DEV} | awk 'BEGIN { FS="[ ]" } ; { $NF=""; print $0;  }'| sed "s/(\|)//g")
+            # get the device data
+            get_dev
 
-            if [[ -z "${DEV_MAC}" ]]; then
-                err "Device \e[35m${DEV_NAME}\e[0m \e[1mcould not be found"
-                exit
-            fi;
+            # see if the device is already there
+            if [[ -z "${DEV}" ]]; then
+                err "Device unavailable, please reatart the bluetooth device."
 
-            # print device
-            log "\e[1mDevice MAC is: \e[0m\e[35m${DEV_MAC}\e[0m"
-            log "\e[1mDevice Name is: \e[0m\e[35m${DEV_FULL_NAME}\e[0m"
+                # create a coprocess to interface with bluetoothctl
+                coproc bluetoothctl
+
+                # scan and wait for the device
+                log "Waiting for device..."
+                echo "scan on" >&"${COPROC[1]}"
+                grep -q "${DEV_NAME}" <&"${COPROC[0]}"
+
+                # kill the coprocess, because we don't need it anymore
+                pkill $COPROC_PID
+
+                get_dev
+
+                if [[ -z "${DEV}" ]]; then
+                    err "Could not find device."
+                    exit
+                fi
+            fi
+
+            # Print data about the device
+            log "\e[1mDevice MAC is : \e[35m${DEV_MAC}\e[0m"
+            log "\e[1mDevice Name is: \e[35m${DEV_FULL_NAME}\e[0m"
             log "Attempting connection..."
 
-            # connect device
-            if bluetoothctl connect ${DEV_MAC} ; then
-                suc "Device \e[35m${DEV_MAC} Connected"
+            # attempt connection
+            if bluetoothctl connect ${DEV_MAC}; then
+
+                # we are connected and therefore done
+                suc "Device \e[35m${DEV_MAC}\e[0m\e[1m Connected"
+
             else
+
+                # the connection failed, which can happen if the device isn'tpaired yet
                 err "Connection failed, Device may not be paired...."
                 log "Attempting to pair..."
+
+                # try pairing the device
                 if bluetoothctl pair ${DEV_MAC}; then
+
+                    # apparently that worked
                     suc "\e[1mDevice Paired!\e[0m"
                     log "Attempting connection again...\e[0m"
+
+                    # try connecting again,
                     if bluetoothctl connect ${DEV_MAC}; then
-                        suc "Device \e[35m${DEV_MAC} Connected!"
+
+                        # it worked, exit
+                        suc "Device \e[35m${DEV_MAC}\e[0m\e[1m Connected!"
+
                     else
+
+                        # connecting didn't work, this time we cannot know the reason, so we exit and let the user figure it out.
                         err "Connection failed, Device not connected."
-                        log "Exiting..."
+
                     fi
+
                 else
+
+                    # that didn't go as planned
                     err "Pairing failed! Is the device in Pairing mode?"
-                fi;
-            fi;
-        fi;
+
+                fi
+            fi
+        fi
+
+    ################################
+    ###    Disonnect Handling    ###
+    ################################
     elif [[ "${MODE}" == "disconnect" ]]; then
+
+        # Did the user specify the name?
         if [[ -z "${DEV_NAME}" ]]; then
+
+            # apparently not
             err "Device not specified."
+
         else
-            # get full device name and  MAC
-            DEV=$(bt-device -l | grep "${DEV_NAME}" | head -n 1)
-            DEV_MAC=$(echo ${DEV} | awk 'BEGIN { FS="[ ]" } ; { print $NF }'| sed "s/(\|)//g")
-            DEV_FULL_NAME=$(echo ${DEV} | awk 'BEGIN { FS="[ ]" } ; { $NF=""; print $0;  }'| sed "s/(\|)//g")
 
-            if [[ -z "${DEV_MAC}" ]]; then
-                err "Device \e[35m${DEV_NAME}\e[0m \e[1mcould not be found"
+            # get all device data, we can assume the thing is connected, since this is a disconnect attempt
+            get_dev
+            
+            # device not found
+            if [[ -z "${DEV}" ]]; then
+                err "Could not find device."
                 exit
-            fi;
+            fi
 
-            # print device
-            echo ""
-            log "Device MAC is: \e[35m${DEV_MAC}"
-            log "Device Name is: \e[35m${DEV_FULL_NAME}"
+            # Print data about the device
+            log "\e[1mDevice MAC is : \e[35m${DEV_MAC}\e[0m"
+            log "\e[1mDevice Name is: \e[35m${DEV_FULL_NAME}\e[0m"
             log "Attempting connection..."
 
-
+            # let's try disconnecting
             if bluetoothctl disconnect ${DEV_MAC}; then
+
+                # that worked, exit
                 suc "Device \e[35m${DEV_MAC}\e[0m \e[1msuccessfully disconnected"
+
             else
+                # are you kidding me? 
                 err "Device could not be disconnected. (is it connected?)"
-            fi;
-        fi;
+            fi
+        fi
     else
+
+        # invalid command (default case)
         help
-    fi;     
-fi;
+
+    fi
+fi
