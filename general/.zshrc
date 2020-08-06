@@ -58,7 +58,6 @@ alias spotify-adblock="LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify"
 alias zip="zip -r "
 alias rpi-ssh="ssh -l pi 192.168.20.11"
 
-
 ######################
 ### General  Setup ###
 ######################
