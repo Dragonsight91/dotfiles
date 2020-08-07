@@ -1,9 +1,8 @@
+#!/bin/bash
 telegram-desktop &
 firefox &
 discord &
-instagram &
 kitty &
 pavucontrol &
-blueberry &
 spotify &
 thunderbird & 

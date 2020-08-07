@@ -7,10 +7,10 @@ configuration {
         background-color:           rgba(7, 7, 14,0.4);
         text-color:                 #ffffff;
 
-        accent-color:               rgb(203, 21, 120);
+        accent-color:               #0dcdcd;
         accent2-color:              #ff69b4;
-        hover-color:                rgb(126, 94, 220);
-        urgent-color:               #ff69b4;
+        hover-color:                #0dcdcd;
+        urgent-color:               #003152;
         window-color:               #1f1c2d;
 
         selected-normal-foreground: @window-color;
@@ -26,7 +26,7 @@ configuration {
         selected-active-foreground: @window-color;
         active-foreground:          @text-color;
         selected-active-background: @hover-color;
-        active-background:          @accent-color;
+        active-background:          #035c98;
 }
 
 #window {

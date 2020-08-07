@@ -17,13 +17,13 @@ set tabstospaces
 
 # UI COLORS
 
-set titlecolor brightwhite,magenta
-set statuscolor brightwhite,magenta
+set titlecolor black,cyan
+set statuscolor black,cyan
 set errorcolor brightwhite,red
-set selectedcolor brightwhite,magenta
-set stripecolor ,magenta
+set selectedcolor black,cyan
+set stripecolor ,cyan
 set numbercolor brightwhite
-set keycolor magenta
+set keycolor cyan
 set functioncolor brightwhite
 
 # Syntax Highlighting

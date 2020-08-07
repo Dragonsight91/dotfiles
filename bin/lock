@@ -1,4 +1,4 @@
-#VAR="$(fortune)"
+#!/bin/bash
 i3lock \
     --blur=10 \
     --insidecolor=000000a0 \

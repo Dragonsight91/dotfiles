@@ -1,14 +1,4 @@
-# set input
-# proper scrolling
-xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
-
-# wacom tablet remappings
-xsetwacom set "Wacom Intuos BT S Pad pad" Button 1 10
-xsetwacom set "Wacom Intuos BT S Pad pad" Button 2 11
-xsetwacom set "Wacom Intuos BT S Pad pad" Button 3 12
-xsetwacom set "Wacom Intuos BT S Pad pad" Button 8 13
-
-
-
-feh --bg-scale ~/Pictures/wallpapers/931367.jpg
-export PATH=$PATH:$HOME/bin:$HOME/.local/bin
+# set background
+feh --bg-scale ~/Pictures/wallpapers/193824.jpg
+# env
+export PATH="$NPM_PACKAGES/bin:$HOME/bin:$HOME/.local/bin:$HOME/.dotnet/tools:$PATH"

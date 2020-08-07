@@ -1,0 +1,62 @@
+#general settings
+title-text: ""
+#desktop-color: "#333"
+desktop-image: "nyarch_bg_grub.png"
+
+terminal-font: "Dejavu Sans Mono 12"
+terminal-left: "0"
+terminal-top: "0"
+terminal-width: "100%"
+terminal-height: "100%"
+terminal-border: "0"
+
+#progress bar
++ progress_bar {
+	id = "__timeout__"
+	left = 0
+	top = 0
+	height = 15
+	width = 100%
+	show_text = false
+
+	# just two vertical pixels of color #1793d1
+    bar_style = "progress_bar/progress_bar_*.png"
+    highlight_style = "progress_bar/progress_bar_hl_*.png"
+}
+
+# arch logo
++ image {
+	top = 20%
+	left = 15%
+    file = "nyarch_logo.png"
+}
+
+#boot menu
++ boot_menu {
+	left = 15%
+	top = 35%
+	height = 30%
+	width = 34%
+	item_font = "DejaVu Sans Bold 14"
+	item_color = "#999"
+	selected_item_font = "DejaVu Sans Bold 14"
+	selected_item_color= "#71c7f2"
+
+	menu_pad_top = 20
+	menu_pad_bottom = 20
+	menu_pixmap_style = "menu/menu_*.png"
+
+	item_height = 21
+	item_padding = 5
+	item_icon_space = 10
+	item_spacing = 1
+	scrollbar = false
+}
+
+#help bar at the bottom
++ image {
+	top = 68%
+	left = 23%
+    file = "help_bar.png"
+}
+

@@ -24,12 +24,13 @@ general {
 
 # To activate/deactivate a module, just comment/uncomment it 
 
-#order += "cpu_usage"                            # CPU Usage             ( show % usage )
+#order += "cpu_usage"                           # CPU Usage             ( show % usage )
 order += "memory"                               # Memory Usage          ( show amount used )
 order += "disk /"                               # Disk usage            ( show free space )
 order += "ethernet _first_"                     # Ethernet Adapter      ( show IP )
-order += "wireless wlp4s0"                      # WiFi Adapter          ( schow IP )
-order += "wireless wwp0s20f0u3c2"               # WWAN adapter          ( no IP )
+order += "wireless _first_"                     # WiFi Adapter          ( show IP )
+order += "wireless wwp0s20f0u3c3"               # WWAN adapter          ( no IP )
+order += "path_exists VPN"                      
 order += "battery 0"                            # Battery 0 Charge      ( show % charge )
 order += "battery 1"                            # Battery 1 Charge      ( show % charge )
 order += "volume master"                        # Main Sink Volume      ( show Vol. % )
@@ -42,50 +43,65 @@ order += "tztime local"                         # Time and date         ( format
 
 # CPU Usage
 cpu_usage {
-        format = "<span background='#f04371' foreground='black'>  </span><span background='#563082' foreground='white'>  %usage  </span> "
+        format = "<span background='#f04371' foreground='black'>  </span><span background='#71c7f2' foreground='#2f2f2f'>  %usage  </span> "
 }
 
 # RAM usage 
 memory {
-        format = "<span foreground='black' background='#eb5ee1' >  </span><span background='#563082' foreground='white'> %used </span>"
+        format = "<span foreground='black' background='#eb5ee1' >  </span><span background='#71c7f2' foreground='#2f2f2f'> %used </span>"
 }
 
 # Disk Usage (root)
 disk "/" {
-        format = "<span background='#a3f7e4' foreground='black'>  </span><span background='#563082' foreground='white'> %avail </span>"
+        format = "<span background='#a3f7e4' foreground='black'>  </span><span background='#71c7f2' foreground='#2f2f2f'> %avail </span>"
 }
 
 # Ethernet port
 ethernet _first_ {
         # if you use %speed, i3status requires root privileges
-        format_up = "<span background='#6ef077' foreground='black'>  </span><span background='#563082' foreground='white'> %ip </span> "
+        format_up = "<span background='#6ef077' foreground='black'>  </span><span background='#71c7f2' foreground='#2f2f2f'> %ip </span>"
         format_down = ""
 }
 
 # Wifi adapter
-wireless  wlp4s0{
+wireless  _first_{
         # if you use %speed, i3status requires root privileges
-        format_up = "<span background='#6ef077' foreground='black'> 直 </span><span background='#563082' foreground='white'> %ip </span> "
+        format_up = "<span background='#6ef077' foreground='black'> 直 </span><span background='#71c7f2' foreground='#2f2f2f'> %ip </span>"
         format_down = ""
 }
 
 # LTE Module
-wireless wwp0s20f0u3c2 {
+wireless wwp0s20f0u3c3 {
       # if you use %speed, i3status requires root privileges
         format_up = "<span background='#6ef077' foreground='black'> 📶 </span>"
         format_down = ""  
+}
+
+# VPN 
+path_exists VPN {
+        # path exists when a VPN tunnel launched by nmcli/nm-applet is active
+        path = "/proc/sys/net/ipv4/conf/tap0"
+        format = "<span background='#6ef077' foreground='black'> 嬨 </span>"
+        format_down=""
+}
+
+path_exists VPN {
+        # path exists when a VPN tunnel launched by nmcli/nm-applet is active
+        path = "/proc/sys/net/ipv4/conf/tap0"
+        format = "<span background='#6ef077' foreground='black'> 嬨 </span>"
+        format_down=""
 }
 
 # Time
 tztime local {
         # format = "%Y-%m-%d %H:%M:%S"
         format_time = "%a %d %b %H:%M"
-        format = "<span background='#f3ff70' foreground='black'>  </span><span background='#563082' foreground='white'> %time </span>"
+        format = "<span background='#f3ff70' foreground='black'>  </span><span background='#71c7f2' foreground='#2f2f2f'> %time </span>"
 }
 
 # Battery 0
 battery 0 {
-        format = "<span background='#6ef077' foreground='black'> %status </span><span background='#563082' foreground='white'> %percentage </span>"
+        format = "<span background='#6ef077' foreground='black'> %status </span><span background='#71c7f2' foreground='#2f2f2f'> %percentage </span>"
         format_down = ""
         status_chr  = ""
         status_bat  = ""
@@ -99,7 +115,7 @@ battery 0 {
 
 # Battery 1 (if exists)
 battery 1 {
-        format = "<span background='#6ef077' foreground='black'> %status </span><span background='#563082' foreground='white'> %percentage </span>"
+        format = "<span background='#6ef077' foreground='black'> %status </span><span background='#71c7f2' foreground='#2f2f2f'> %percentage </span>"
         format_down = ""
         status_chr  = ""
         status_bat  = ""
@@ -113,7 +129,7 @@ battery 1 {
 
 # Volume Display
 volume master {
-        format = "<span background='#6ef077' foreground='black'> 墳 </span><span background='#563082' foreground='white'> %volume </span>"
+        format = "<span background='#6ef077' foreground='black'> 墳 </span><span background='#71c7f2' foreground='#2f2f2f'> %volume </span>"
         format_muted = "<span background='#f04371' foreground='black'> 婢 </span>"
         device = "pulse"
         mixer = "Master"

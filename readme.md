@@ -2,7 +2,11 @@
 This is the repository and a manual on how to replicate my exact setup.
 The fonts used here sre not mine, but they are freely Available.
 
-![A Screenshot with my dotfiles and background image](image/screenshot_dotfiles.png)
+## i3 Theme
+![A Screenshot with my dotfiles and background image](https://cdn.discordapp.com/attachments/793215955546800170/845230207714590750/unknown.png)
+
+## Grub-theme
+![A screenshot of my grub-theme](https://media.discordapp.net/attachments/793215955546800170/845008081561714738/unknown.png)
 
 ## Dependencies
 
@@ -12,6 +16,7 @@ The fonts used here sre not mine, but they are freely Available.
 | `curl`          | command line tool and library for transferring data with URLs. |
 | `i3-gaps`       | The Window Manager |
 | `i3status`      | gives status info on i3bar |
+| `playerctl`     | gives cli controls for music players as well as metadata output | 
 | `nemo`          | The file manager i use |
 | `feh`           | an application that sets the background image |
 | `nomacs`        | An image viewer that also has basic editing features|
@@ -22,7 +27,7 @@ The fonts used here sre not mine, but they are freely Available.
 | `i3lock-color`  | a better version of i3lock, a screen locker |
 | `picom`         | Extra compositor that enables transparency in the terminal  |
 | `betterdiscord` | enables discord themes |
-| `discord`       | i don't think this needs an introduction|
+| `discord`       | i don't think this needs an introduction |
 | `zsh`           | a nicer looking shell with extra functions |
 | `oh-my-zsh`     | an even better way to theme zsh |
 | `zsh-autojump`  | a plugin that allows using `j [Dirname]` to jump to any directory, as long as you previously visited that directory (say i'm in `/` and i wanna get to `/home/$USER/Documents`, just type `j Doc` and it jumps there.)
@@ -33,10 +38,9 @@ The fonts used here sre not mine, but they are freely Available.
 1. Download & install all dependencies
 
     ```bash
-
     # install normal packages available on a package manager
     # here: pacman, replace "pacman -S" with your equivalent, like "apt-get install"
-    sudo pacman -S curl i3-gaps i3status kitty rofi python xss-lock picom feh zsh i3lock-color discord git nemo nomacs xf86-input-wacom xbindkeys xdotool
+    sudo pacman -S curl i3-gaps i3status kitty rofi python xss-lock picom feh zsh i3lock-color discord git nemo nomacs xbindkeys xdotool playerctl
 
     # install betterdiscord
     curl -O https://raw.githubusercontent.com/bb010g/betterdiscordctl/master/betterdiscordctl
@@ -97,6 +101,17 @@ The fonts used here sre not mine, but they are freely Available.
     cp -r .fonts/* ~/.fonts/
     cp -r bin/* ~/.local/bin/
     cp -r general/* ~/
+
+    # install the grub theme
+
+    # if you wanna install the grub theme, you will have to edit 
+    # /etc/default/grub and set
+    # GRUB_THEME="/boot/grub/themes/grub-cyberpunk/theme.txt"
+    sudo nano /etc/default/grub
+
+    # now just run the install script
+    sudo ./grub-theme/install.sh
+
     ```
 ## Shortcuts
 
@@ -117,12 +132,16 @@ The main modifier used is <kbd>Super</kbd>. this can be changed on the top of th
 - <kbd>Super + Shift + C</kbd> - reload i3 config
 - <kbd>Super + Shift + R</kbd> - restart i3 in place
 
-
+### Media controls (needs `playerctl` package)
+- Play/pause and volume control works woith media keys
+- <kbd>Super + P</kbd> - Play/Pause
+- <kbd>Super + PgUp</kbd> - Next song
+- <kbd>Super + PgDn</kbd> - restart i3 in place
 
 ### window controls
 - <kbd>Super + {ARROW}</kbd> - focus window 
 - <kbd>Super + Shift + {ARROW}</kbd> - move window 
-- <kbd>Super + Alt + {ARROW}</kbd> - resize window
+- <kbd>Super + Shift + Alt + {ARROW}</kbd> - resize window
 - <kbd>Super + Shift + Q</kbd> - kill focused window
 - <kbd>Super + F</kbd> - toggle fullscreen
 - <kbd>Super + T</kbd> - toggle tabbed layout

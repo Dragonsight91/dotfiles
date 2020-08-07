@@ -1,16 +1,29 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
+###############
+### ENVVARS ###
+###############
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/${USER}/.oh-my-zsh"
+export ZSH="/usr/share/oh-my-zsh"
+
+# general user stuff
 export ID=92873481236524716398128273 	# some random number
 export MAIN_PC=emma@192.168.20.204 		# my main PC's SSH details
-ZSH_THEME="agnoster"
+export PI=192.168.1.99                  # raspberry pi local ip
+# mic loopback script envvars
+export LOOPBACK_MIC="alsa_input.pci-0000_00_1f.3.analog-stereo"
+export LOOPBACK_OUT="bluez_sink.00_16_94_38_24_8F.a2dp_sink"
 
+# env stuff
+export EDITOR="nano"
+export NPM_PACKAGES="${HOME}/.npm-packages"
+export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+export PATH="$NPM_PACKAGES/bin:$HOME/bin:$HOME/.local/bin:$HOME/.dotnet/tools:$PATH"
 
 ######################
 ### PLUGIN LOADING ###
 ######################
+
+ZSH_THEME="agnoster"
 plugins=(
     git
 	colorize
@@ -21,14 +34,14 @@ plugins=(
 	python
 	urltools
 	autojump
-	zsh-syntax-highlighting
 	k
+	zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # load autojump
-[[ -s /home/$USER/.autojump/etc/profile.d/autojump.sh ]] && source /home/$USER/.autojump/etc/profile.d/autojump.sh
+[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 autoload -U compinit && compinit -u
 
 # Compilation flags
@@ -56,13 +69,19 @@ alias nani="echo 'おまえ は もう しんでいる';echo '何？'"
 alias sudo="sudo "
 alias spotify-adblock="LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify"
 alias zip="zip -r "
-alias rpi-ssh="ssh -l pi 192.168.20.11"
-
+alias weather='curl wttr.in/breinig\?qmM1'
+alias mnt_anime='mount -vvv -t nfs 192.168.1.90:/Anime /media/nfs0'
 ######################
 ### General  Setup ###
 ######################
 
 export DEFAULT_USER=emma
 clear
-neofetch --ascii --ascii_colors 13 13 13 13 13 13 --colors 5 7 7 13 13 7 7
+
+if [[ "${TERM}" = "xterm-256color" ]];
+then
+    neofetch --ascii
+else
+    neofetch
+fi
 
