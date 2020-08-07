@@ -3,7 +3,7 @@
 ########################
 ###    Input Args    ###
 ########################
-
+shopt -s extglob
 DEV_NAME="${2}"
 MODE="${1}"
 
@@ -61,6 +61,7 @@ function wait_dev() {
     echo "power on" >&"${COPROC[1]}"
     
     # scan and wait for the device
+    log "Please power on or restart the device."
     log "Waiting for device..."
     echo "scan on" >&"${COPROC[1]}"
     grep -q "${DEV_NAME}" <&"${COPROC[0]}"
@@ -118,7 +119,12 @@ else
                 if bluetoothctl pair ${DEV_MAC}; then
 
                     # apparently that worked
-                    suc "\e[1mDevice Paired!\e[0m"
+                    suc "Device Paired!"
+
+                    # trust the device and continue
+                    log "Setting trust..."
+                    bluetoothctl trust ${DEV_MAC}
+
                     log "Attempting connection again...\e[0m"
 
                     # try connecting again,
