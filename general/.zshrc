@@ -1,16 +1,24 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
+###############
+### ENVVARS ###
+###############
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/${USER}/.oh-my-zsh"
+
+# general user stuff
 export ID=92873481236524716398128273 	# some random number
 export MAIN_PC=emma@192.168.20.204 		# my main PC's SSH details
-ZSH_THEME="agnoster"
+
+# mic loopback script envvars
+export LOOPBACK_MIC="alsa_input.pci-0000_00_1f.3.analog-stereo"
+export LOOPBACK_OUT="bluez_sink.00_16_94_38_24_8F.a2dp_sink"
 
 
 ######################
 ### PLUGIN LOADING ###
 ######################
+
+ZSH_THEME="agnoster"
 plugins=(
     git
 	colorize
@@ -28,7 +36,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # load autojump
-[[ -s /home/$USER/.autojump/etc/profile.d/autojump.sh ]] && source /home/$USER/.autojump/etc/profile.d/autojump.sh
+[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 autoload -U compinit && compinit -u
 
 # Compilation flags

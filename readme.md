@@ -2,7 +2,11 @@
 This is the repository and a manual on how to replicate my exact setup.
 The fonts used here sre not mine, but they are freely Available.
 
+## i3 Theme
 ![A Screenshot with my dotfiles and background image](image/screenshot_dotfiles.png)
+
+## Grub-theme
+![A screenshot of my grub-theme](https://cdn.discordapp.com/attachments/659653899623596033/741700281024249943/unknown.png)
 
 ## Dependencies
 
