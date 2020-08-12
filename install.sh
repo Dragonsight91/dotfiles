@@ -12,6 +12,7 @@ mkdir ~/.backup
 
 echo "backing up Files..."
 echo "errors here are normal, if the files haven't been generated. They can be ignored, as they would be replaced anyways."
+
 # back up all files
 mv .config/i3 ~/.backup
 mv .config/i3status ~/.backup
@@ -21,7 +22,7 @@ mv .config/BetterDiscord ~/.backup
 mv $HOME/.zshrc ~/.backup
 mv $HOME/.nanorc ~/.backup
 mv $HOME/.xprofile ~/.backup    
-mv $HOME/.fonts/* $PWD/.fonts/  # move all fonte into the central directory
+mv $HOME/.fonts/* $PWD/.fonts/  # move all fonts into the central directory
 
 
 

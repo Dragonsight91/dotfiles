@@ -101,6 +101,17 @@ The fonts used here sre not mine, but they are freely Available.
     cp -r .fonts/* ~/.fonts/
     cp -r bin/* ~/.local/bin/
     cp -r general/* ~/
+
+    # install the grub theme
+
+    # if you wanna install the grub theme, you will have to edit 
+    # /etc/default/grub and set
+    # GRUB_THEME="/boot/grub/themes/grub-cyberpunk/theme.txt"
+    sudo nano /etc/default/grub
+
+    # now just run the install script
+    sudo ./grub-theme/install.sh
+
     ```
 ## Shortcuts
 
