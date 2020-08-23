@@ -23,6 +23,7 @@ mv $HOME/.zshrc $HOME/.backup
 mv $HOME/.nanorc $HOME/.backup
 mv $HOME/.xprofile $HOME/.backup    
 mv $HOME/.fonts/* $HOME/.fonts/  # move all fonts into the central directory
+rm -r $HOME/.fonts               # remove fontdir
 
 
 
@@ -30,10 +31,15 @@ echo "creating directories (in case they don't exist)"
 mkdir $HOME/.local $HOME/.local/bin $HOME/.config
 
 echo "Linking all files and folders..."
-ln -s $PWD/.config/* $HOME.config/
+
+# link all folders in .config
+for i in $(ls $PWD/.config/); 
+do
+    ln -s $PWD/.config/$i $HOME/.config/$i
+done;
+
 ln -s $PWD/.scripts $HOME/.scripts
 ln -s $PWD/bin/* $HOME/.local/bin/
-ln -s $PWD/.scripts $HOME/
 ln -s $PWD/.fonts $HOME/
 
 echo "please add any previous configurations of your .rcfiles and .xprofile again (it has been replaced)"
