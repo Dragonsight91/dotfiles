@@ -8,29 +8,29 @@ echo "Getting all submodules... \n"
 git submodule update --init --recursive # update and download all submodules
 
 echo "\nCreating ${HOME}/.backup folder for backing up all configs..."
-mkdir ~/.backup
+mkdir $HOME/.backup
 
 echo "backing up Files..."
 echo "errors here are normal, if the files haven't been generated. They can be ignored, as they would be replaced anyways."
 
 # back up all files
-mv .config/i3 ~/.backup
-mv .config/i3status ~/.backup
-mv .config/kitty ~/.backup
-mv .config/rofi ~/.backup
-mv .config/BetterDiscord ~/.backup
-mv $HOME/.zshrc ~/.backup
-mv $HOME/.nanorc ~/.backup
-mv $HOME/.xprofile ~/.backup    
-mv $HOME/.fonts/* $PWD/.fonts/  # move all fonts into the central directory
+mv $HOME/.config/i3 $HOME/.backup
+mv $HOME/.config/i3status $HOME/.backup
+mv $HOME/.config/kitty $HOME/.backup
+mv $HOME/.config/rofi $HOME/.backup
+mv $HOME/.config/BetterDiscord $HOME/.backup
+mv $HOME/.zshrc $HOME/.backup
+mv $HOME/.nanorc $HOME/.backup
+mv $HOME/.xprofile $HOME/.backup    
+mv $HOME/.fonts/* $HOME/.fonts/  # move all fonts into the central directory
 
 
 
 echo "creating directories (in case they don't exist)"
-mkdir $HOME/.local $HOME/.local/bin
+mkdir $HOME/.local $HOME/.local/bin $HOME/.config
 
 echo "Linking all files and folders..."
-ln -s $PWD/.config/* ~/.config/
+ln -s $PWD/.config/* $HOME.config/
 ln -s $PWD/.scripts $HOME/.scripts
 ln -s $PWD/bin/* $HOME/.local/bin/
 ln -s $PWD/.scripts $HOME/

@@ -40,7 +40,7 @@ function suc() {
 # a function to get all the device data
 function get_dev() {
     # get full device name and  MAC of the device
-    DEV=$(bt-device -l | grep "${DEV_NAME}" | head -n 1)
+    DEV=$(bt-device -l | grep -F "${DEV_NAME}" | head -n 1)
     DEV_MAC=$(echo ${DEV} | awk 'BEGIN { FS="[ ]" } ; { print $NF }' | sed "s/(\|)//g")
     DEV_FULL_NAME=$(echo ${DEV} | awk 'BEGIN { FS="[ ]" } ; { $NF=""; print $0;  }' | sed "s/(\|)//g")
 
@@ -59,12 +59,12 @@ function wait_dev() {
     # turn on the device
     log "powering on bluetooth"
     echo "power on" >&"${COPROC[1]}"
-    
+
     # scan and wait for the device
     log "Please power on or restart the device."
     log "Waiting for device..."
     echo "scan on" >&"${COPROC[1]}"
-    grep -q "${DEV_NAME}" <&"${COPROC[0]}"
+    grep -Fq "${DEV_NAME}" <&"${COPROC[0]}"
 
     # kill the coprocess, because we don't need it anymore
     pkill $COPROC_PID
@@ -87,7 +87,7 @@ else
         if [[ -z "${DEV_NAME}" ]]; then
 
             #User didn't specify the device
-            err "Device not specified.\e[0m"
+            err "Device not specified."
             help
 
         else
@@ -99,8 +99,8 @@ else
             get_dev
 
             # Print data about the device
-            log "\e[1mDevice MAC is : \e[35m${DEV_MAC}\e[0m"
-            log "\e[1mDevice Name is: \e[35m${DEV_FULL_NAME}\e[0m"
+            log "\e[1mDevice MAC is : \e[35m${DEV_MAC}"
+            log "\e[1mDevice Name is: \e[35m${DEV_FULL_NAME}"
             log "Attempting connection..."
 
             # attempt connection
@@ -125,7 +125,7 @@ else
                     log "Setting trust..."
                     bluetoothctl trust ${DEV_MAC}
 
-                    log "Attempting connection again...\e[0m"
+                    log "Attempting connection again..."
 
                     # try connecting again,
                     if bluetoothctl connect ${DEV_MAC}; then
@@ -172,8 +172,8 @@ else
             fi
 
             # Print data about the device
-            log "\e[1mDevice MAC is : \e[35m${DEV_MAC}\e[0m"
-            log "\e[1mDevice Name is: \e[35m${DEV_FULL_NAME}\e[0m"
+            log "Device MAC is : \e[35m${DEV_MAC}"
+            log "Device Name is: \e[35m${DEV_FULL_NAME}"
             log "Attempting connection..."
 
             # let's try disconnecting
