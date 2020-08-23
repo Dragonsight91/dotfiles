@@ -181,7 +181,7 @@ bindsym $mod_main+Shift+r restart
 bindsym $mod_main+l exec --no-startup-id lock
 
 # logout
-bindsym $mod_main+Shift+Escape exec --no-startup-id i3exit logout
+bindsym $mod_main+Shift+Escape exec --no-startup-id i3-msg exit
 
 # start rofi
 bindsym $mod_main+d exec --no-startup-id "rofi -show combi -combi-modi window,run"
@@ -190,18 +190,29 @@ bindsym XF86Search exec --no-startup-id "rofi -show combi -combi-modi window,run
 # start a terminal
 bindsym $mod_main+Return exec kitty
 
+########################################
+### Media Keys and controls
+########################################
+
 # volume control
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-
 # music controls
+## play/pause
 bindsym XF86AudioPause exec --no-startup-id playerctl pause
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym $mod_main+P exec playerctl play-pause
+
+## next title
 bindsym XF86AudioNext exec playerctl next
+bindsym $mod_main+Prior exec playerctl next
+
+## previous title
 bindsym XF86AudioPrev exec playerctl previous
+bindsym $mod_main+Next exec playerctl previous
 
 ########################################
 ### Workspace Keybinds 
