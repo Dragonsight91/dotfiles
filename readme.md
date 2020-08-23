@@ -134,8 +134,6 @@ The main modifier used is <kbd>Super</kbd>. this can be changed on the top of th
 
 ### Media controls (needs `playerctl` package)
 - Play/pause and volume control works woith media keys
-- <kbd>Super + Alt + Up</kbd> - Play/Pause
-- <kbd>Super + Alt + Down</kbd> - Next song
 - <kbd>Super + P</kbd> - Play/Pause
 - <kbd>Super + PgUp</kbd> - Next song
 - <kbd>Super + PgDn</kbd> - restart i3 in place
