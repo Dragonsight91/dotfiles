@@ -183,6 +183,13 @@ bindsym $mod_main+l exec --no-startup-id lock
 # logout
 bindsym $mod_main+Shift+Escape exec --no-startup-id i3exit logout
 
+# start rofi
+bindsym $mod_main+d exec --no-startup-id "rofi -show combi -combi-modi window,run"
+bindsym XF86Search exec --no-startup-id "rofi -show combi -combi-modi window,run"
+
+# start a terminal
+bindsym $mod_main+Return exec kitty
+
 # volume control
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
@@ -225,18 +232,6 @@ bindsym $mod_main+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym $mod_main+Shift+9 move container to workspace $ws9; workspace $ws9
 bindsym $mod_main+Shift+0 move container to workspace $ws10; workspace $ws10
 bindsym $mod_main+Shift+plus move container to workspace $ws11; workspace $ws11
-
-
-########################################
-### Program Shortcuts 
-########################################
-
-# start rofi
-bindsym $mod_main+d exec --no-startup-id "rofi -show combi -combi-modi window,run"
-
-# start a terminal
-bindsym $mod_main+Return exec kitty
-
 
 ########################################
 ### Window  controls
