@@ -10,5 +10,5 @@ xsetwacom set "Wacom Intuos BT S Pad pad" Button 8 13
 
 
 
-feh --bg-scale ~/Pictures/wallpapers/931367.jpg
+feh --bg-scale ~/Pictures/wallpapers/foxgirl_bg2.jpg
 export PATH=$PATH:$HOME/bin:$HOME/.local/bin

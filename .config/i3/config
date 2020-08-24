@@ -47,16 +47,16 @@ bar {
     tray_output none
 
     colors {
-        background #241b2f
-        statusline #F9FAF9
-        separator  #241b2f
+        background #ff8fc7
+        statusline #000000
+        separator  #ff8fc7
 
 #                           border  backgr. text
-        focused_workspace  #241b2f #f043de #EEE8D5
-        active_workspace   #241b2f #ed74e1 #241b2f
-        inactive_workspace #241b2f #563082 #EEE8D5
-        binding_mode       #241b2f #2C2C2C #EEE8D5
-        urgent_workspace   #241b2f #f43490 #EEE8D5
+        focused_workspace  #ff8fc7 #ff008d #3b2133
+        active_workspace   #ff8fc7 #ff008d #241b2f
+        inactive_workspace #ff8fc7 #ed61a7 #3b2133
+        binding_mode       #ff8fc7 #2C2C2C #3b2133
+        urgent_workspace   #ff8fc7 #ff1467 #000000
     }
 }
 
@@ -72,11 +72,11 @@ gaps outer -2
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #563082 #563082 #EEE8D5 #EEE8D5
-  client.focused_inactive #563082 #563082 #EEE8D5 #EEE8D5
-  client.unfocused        #241b2f #241b2f #EEE8D5 #EEE8D5
-  client.urgent           #985ae0 #985ae0 #EEE8D5 #EEE8D5
-  client.placeholder      #241b2f #241b2f #EEE8D5 #EEE8D5 
+  client.focused          #ff008d #ff008d #3b2133 #3b2133
+  client.focused_inactive #f08bc6 #f08bc6 #3b2133 #3b2133
+  client.unfocused        #f08bc6 #f08bc6 #3b2133 #3b2133
+  client.urgent           #ff7aa9 #ff1467 #3b2133 #3b2133
+  client.placeholder      #ff7aa9 #241b2f #3b2133 #3b2133
 
   client.background       #ffffff
 

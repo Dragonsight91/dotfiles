@@ -70,7 +70,7 @@ alias rpi-ssh="ssh -l pi 192.168.20.11"
 ### General  Setup ###
 ######################
 
-export DEFAULT_USER=emma
+export DEFAULT_USER=roxanne
 clear
 neofetch --ascii --ascii_colors 13 13 13 13 13 13 --colors 5 7 7 13 13 7 7
 
