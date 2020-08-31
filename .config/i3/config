@@ -4,8 +4,8 @@
 
 
 ## Set Modifiers
-set $mod_main Mod4
-set $alt Mod1
+set $mod_main Mod1
+set $alt Control
 
 font pango:Source Code Pro 12
 
@@ -29,7 +29,9 @@ exec --no-startup-id xfce4-power-manager
 exec --no-startup-id xbindkeys
 
 # Define Screens
-set $screen_internal eDP1
+set $screen_left DVI-2-1
+set $screen_right DVI-2-0
+set $screen_center DVI-D-0
 
 
 ########################################
@@ -105,9 +107,24 @@ set $ws11 11:Video
 ### Workspace <-> Monitor Bindings
 ########################################
 
-# Default bindings
+## left Monitor
+workspace $ws1 output $screen_left
+workspace $ws4 output $screen_left
+workspace $ws7 output $screen_left
+workspace $ws8 output $screen_left
 
-## TODO: create more workspace bindings for dock mode
+## center Monitor
+workspace $ws2 output $screen_center
+workspace $ws5 output $screen_center
+workspace $ws6 output $screen_center
+workspace $ws11 output $screen_center
+
+## right Monitor
+workspace $ws3 output $screen_right
+workspace $ws9 output $screen_right
+workspace $ws10 output $screen_right
+
+
 
 ########################################
 ### Window <-> Workspace Bindings
@@ -185,11 +202,17 @@ bindsym $mod_main+l exec --no-startup-id lock
 bindsym $mod_main+Shift+Escape exec --no-startup-id i3exit logout
 
 # volume control
+## if you have media keys: use 'em (also headset volume control)
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
+## no media keys? (I have a Model M, no fancy media keys :p)
+bindsym $mod_main+KP_Add exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym $mod_main+KP_Subtract exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym $mod_main+KP_Multiply exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym $mod_main+KP_Divide exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # brightness control
 
