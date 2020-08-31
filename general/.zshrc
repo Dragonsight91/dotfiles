@@ -1,6 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
-export ANGELA_UID=631187007279726614
+#export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/${USER}/.oh-my-zsh"
@@ -26,11 +25,20 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # load autojump
-[[ -s /home/$USER/.autojump/etc/profile.d/autojump.sh ]] && source /home/$USER/.autojump/etc/profile.d/autojump.sh
+[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 autoload -U compinit && compinit -u
 
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
+
+#########################
+### INPUT DEFINITIONS ###
+#########################
+
+bindkey '^[[1;5D' backward-word
+bindkey '^[[1;5C' forward-word
+bindkey '^H' backward-kill-word
+bindkey '5~' kill-word
 
 ###################
 ###   ALIASES   ###
@@ -56,12 +64,14 @@ alias spotify-adblock="LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify"
 alias zip="zip -r "
 alias rpi-ssh="ssh -l pi 192.168.20.11"
 
-
 ######################
 ### General  Setup ###
 ######################
 
+# envvars
 export DEFAULT_USER=emma
+
+# shell reset
 clear
 neofetch --ascii --ascii_colors 13 13 13 13 13 13 --colors 5 7 7 13 13 7 7
 

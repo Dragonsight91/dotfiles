@@ -1,14 +1,13 @@
-# set input
-# proper scrolling
-xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
+# wacom tablet remappings (keeping these, until i write the permanent config)
+#xsetwacom set "Wacom Intuos BT S Pad pad" Button 1 10
+#xsetwacom set "Wacom Intuos BT S Pad pad" Button 2 11
+#xsetwacom set "Wacom Intuos BT S Pad pad" Button 3 12
+#xsetwacom set "Wacom Intuos BT S Pad pad" Button 8 13
 
-# wacom tablet remappings
-xsetwacom set "Wacom Intuos BT S Pad pad" Button 1 10
-xsetwacom set "Wacom Intuos BT S Pad pad" Button 2 11
-xsetwacom set "Wacom Intuos BT S Pad pad" Button 3 12
-xsetwacom set "Wacom Intuos BT S Pad pad" Button 8 13
-
-
+xrandr --output DVI-2-1 --mode 1920x1080 --left-of DVI-D-0
+xrandr --output DVI-2-0 --mode 1024x768 --right-of DVI-D-0
+xrandr --output DVI-D-0 --mode 1920x1080 --rate 144
 
 feh --bg-scale ~/Pictures/wallpapers/cyberpunk1.jpg
-export PATH=$PATH:/home/$USER/bin
+export PATH=$PATH:$HOME/bin:$HOME/.local/bin:/usr/local/bin
+
