@@ -1,0 +1,17 @@
+#!/bin/bash
+
+mic=alsa_input.usb-Razer_Razer_Kraken_X_USB_00000000-00.analog-stereo
+spk=alsa_output.usb-Razer_Razer_Kraken_X_USB_00000000-00.analog-stereo
+
+echo "Creating virtual output devices"
+pactl load-module module-null-sink sink_name=vsink_in sink_properties=device.description=vsink_in
+pactl load-module module-null-sink sink_name=vsink_mic sink_properties=device.description=vsink_mic
+
+echo "Creating loopbacks"
+pactl load-module module-loopback latency_msec=30 adjust_time=3 source=$mic             sink=vsink_mic
+pactl load-module module-loopback latency_msec=30 adjust_time=3 source=vsink_in.monitor sink=vsink_mic
+pactl load-module module-loopback latency_msec=30 adjust_time=3 source=vsink_in.monitor sink=$spk
+
+echo "Setting default devices"
+pactl set-default-source vsink_mic.monitor
+pactl set-default-sink $spk

@@ -1,13 +1,22 @@
 # If you come from bash you might have to change your $PATH.
 #export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
 
+###############
+### ENVVARS ###
+###############
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/${USER}/.oh-my-zsh"
-ZSH_THEME="agnoster"
+
+# mic loopback script envvars
+export LOOPBACK_MIC="alsa_input.pci-0000_00_1f.3.analog-stereo"
+export LOOPBACK_OUT="bluez_sink.00_16_94_38_24_8F.a2dp_sink"
 
 ######################
 ### PLUGIN LOADING ###
 ######################
+ZSH_THEME="agnoster"
+
 plugins=(
     git
 	colorize

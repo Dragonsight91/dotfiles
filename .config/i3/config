@@ -23,10 +23,10 @@ for_window [class="Nemo"] floating enable
 # Autostart applications
 
 exec --no-startup-id xss-lock --transfer-sleep-lock -- lock --nofork
-exec --no-startup-id picom 
-exec --no-startup-id nm-applet
+exec --no-startup-id picom -b
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id xbindkeys
+exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
 
 # Define Screens
 set $screen_left DVI-2-1
@@ -151,6 +151,7 @@ assign [class="urxvt"] $ws4
 # Games Workspace
 assign [class="Steam"] $ws5
 assign [class=".inecraft.*"] $ws5
+assign [class="SaintsRow3.*"] $ws5
 
 # Image Workspace
 assign [class="Gimp"] $ws6
@@ -173,6 +174,7 @@ assign [class="Mail|Thunderbird"] $ws9
 assign [class="Pavucontrol"] $ws10
 assign [class=".*lueberry.py"] $ws10
 assign [class=".*arrier"] $ws10
+assign [class=".odem-manager-gui"] $ws10
 
 ###### SPECIAL WORKSPACES ######
 
@@ -199,10 +201,20 @@ bindsym $mod_main+Shift+r restart
 bindsym $mod_main+l exec --no-startup-id lock
 
 # logout
-bindsym $mod_main+Shift+Escape exec --no-startup-id i3exit logout
+bindsym $mod_main+Shift+Escape exit
+
+# start rofi
+bindsym $mod_main+d exec --no-startup-id "rofi -show combi -combi-modi window,run"
+bindsym XF86Search exec --no-startup-id "rofi -show combi -combi-modi window,run"
+
+# start a terminal
+bindsym $mod_main+Return exec kitty
+
+########################################
+### Media Keys and controls
+########################################
 
 # volume control
-## if you have media keys: use 'em (also headset volume control)
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -214,7 +226,24 @@ bindsym $mod_main+KP_Subtract exec --no-startup-id pactl set-sink-volume @DEFAUL
 bindsym $mod_main+KP_Multiply exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym $mod_main+KP_Divide exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-# brightness control
+# music controls
+## play/pause
+bindsym XF86AudioPause exec --no-startup-id playerctl pause
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym $mod_main+P exec playerctl play-pause
+
+## next title
+bindsym XF86AudioNext exec playerctl next
+bindsym $mod_main+Prior exec playerctl next
+
+## previous title
+bindsym XF86AudioPrev exec playerctl previous
+bindsym $mod_main+Next exec playerctl previous
+
+# other media keys
+bindsym XF86AudioPlayPause exec --no-startup-id playerctl play-pause
+bindsym XF86Mail exec --no-startup-id thunderbird
+bindsym XF86Messenger exec --no-startup-id telegram-desktop; exec --no-startup-id discord
 
 
 ########################################
@@ -246,18 +275,6 @@ bindsym $mod_main+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym $mod_main+Shift+9 move container to workspace $ws9; workspace $ws9
 bindsym $mod_main+Shift+0 move container to workspace $ws10; workspace $ws10
 bindsym $mod_main+Shift+plus move container to workspace $ws11; workspace $ws11
-
-
-########################################
-### Program Shortcuts 
-########################################
-
-# start rofi
-bindsym $mod_main+d exec --no-startup-id "rofi -show combi -combi-modi window,run"
-
-# start a terminal
-bindsym $mod_main+Return exec kitty
-
 
 ########################################
 ### Window  controls

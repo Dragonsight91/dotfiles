@@ -15,6 +15,7 @@ The fonts used here sre not mine, but they are freely Available.
 | `nomacs`        | An image viewer that also has basic editing features|
 | `kitty`         | A nice looking Terminal |
 | `rofi`          | A dmenu that is better than the default i3 dmenu |
+| `playerctl`     | gives cli controls for music players as well as metadata output |
 | `python`        | the Python Language Interpreter |
 | `xss-lock`      | a tool that automatically locks the screen on inactivity |
 | `i3lock-color`  | a better version of i3lock, a screen locker |
@@ -33,8 +34,8 @@ The fonts used here sre not mine, but they are freely Available.
     ```bash
 
     # install normal packages available on a package manager
-    # here: pacman, replace "yay -S" with your equivalent, like "apt-get install"
-    sudo pacman -S curl i3-gaps i3status kitty rofi python xss-lock picom feh zsh i3lock-color discord git nemo nomacs xf86-input-wacom xbindkeys xdotool
+    # here: pacman, replace "pacman -S" with your equivalent, like "apt-get install"
+    sudo pacman -S curl i3-gaps i3status kitty rofi python xss-lock picom feh zsh i3lock-color discord git nemo nomacs xbindkeys xdotool playerctl
 
     # install betterdiscord
     curl -O https://raw.githubusercontent.com/bb010g/betterdiscordctl/master/betterdiscordctl
@@ -95,13 +96,25 @@ The fonts used here sre not mine, but they are freely Available.
     cp -r .fonts/* ~/.fonts/
     cp -r bin/* ~/.local/bin/
     cp -r general/* ~/
+
+    # install the grub theme
+    # if you wanna install the grub theme, you will have to edit 
+    # /etc/default/grub and set
+    # GRUB_THEME="/boot/grub/themes/grub-cyberpunk/theme.txt"
+    sudo nano /etc/default/grub
+
+    # now just run the install script
+    sudo ./grub-theme/install.sh
+
     ```
+
 ## Shortcuts
 
 The main modifier used is <kbd>Super</kbd>. this can be changed on the top of the i3 config, by setting `$mod_main`.
 **WARNING** if you set `$mod_main` to <kbd>Alt</kbd>, you have to change the modifier for `$alt` as well.
 
 ### General controls
+
 - <kbd>Super + L</kbd> - spawn i3-lock
 - <kbd>Super + D</kbd> - spawn rofi
 - <kbd>Super + Enter</kbd> - start Kitty
@@ -115,9 +128,15 @@ The main modifier used is <kbd>Super</kbd>. this can be changed on the top of th
 - <kbd>Super + Shift + C</kbd> - reload i3 config
 - <kbd>Super + Shift + R</kbd> - restart i3 in place
 
+### Media controls (needs `playerctl` package)
 
+- Play/pause and volume control works woith media keys
+- <kbd>Super + P</kbd> - Play/Pause
+- <kbd>Super + PgUp</kbd> - Next song
+- <kbd>Super + PgDn</kbd> - restart i3 in place
 
 ### window controls
+
 - <kbd>Super + {ARROW}</kbd> - focus window 
 - <kbd>Super + Shift + {ARROW}</kbd> - move window 
 - <kbd>Super + Alt + {ARROW}</kbd> - resize window
@@ -130,7 +149,7 @@ The main modifier used is <kbd>Super</kbd>. this can be changed on the top of th
 Everything works based on the i3 workspaces. All the programs i use are assigned to a workspace. In workspaces where i have multiple windows, i switch to tabbed layout.
 This way you can easily use the space efficiently. When i have more than one monitor, i assign workspaces to monitors, making this compatible with both multhihead setups as well as laptop Setups (i use it on both).
 
-### The Window bindin
+### The Window bindings
 This is a list of all applications and workspaces and where you can expect things to go. Apart from the Video workspace (which uses <kbd>Super + +</kbd> to switch), you can expect these numbers to be the actual number used to swoitch to that workspace.
 
 0. **Misc**
@@ -139,6 +158,7 @@ This is a list of all applications and workspaces and where you can expect thing
     - pavucontrol
     - barrier
     - blueberry
+    - modem-manager-gui
 
 1. **Browser**
 
