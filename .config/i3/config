@@ -7,7 +7,7 @@
 set $mod_main Mod1
 set $alt Control
 
-font pango:Source Code Pro 12
+font pango:RobotoMono Nerd Font Mono 12
 
 # General Window Behavior & design
 focus_on_window_activation focus

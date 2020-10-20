@@ -35,12 +35,12 @@ disk "/" {
 
 ethernet _first_ {
         # if you use %speed, i3status requires root privileges
-        format_up = "<span background='#6ef077' foreground='black'>  </span><span background='#563082' foreground='white'> %ip </span> "
+        format_up = "<span background='#6ef077' foreground='black'>  </span><span background='#563082' foreground='white'> %ip </span>"
         format_down = ""
 }
 wireless  _first_ {
         # if you use %speed, i3status requires root privileges
-        format_up = "<span background='#6ef077' foreground='black'> 直 </span><span background='#563082' foreground='white'> %ip </span> "
+        format_up = "<span background='#6ef077' foreground='black'> 直 </span><span background='#563082' foreground='white'> %ip </span>"
         format_down = ""
 }
 
