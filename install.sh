@@ -39,13 +39,14 @@ do
 done;
 for i in $(ls $PWD/bin/); 
 do
-    ln -s $PWD/.config/$i $HOME/.local/bin/$i
+    ln -s $PWD/bin/$i $HOME/.local/bin/$i
 done;
 for i in $(ls -a $PWD/general/.*); 
 do
     ln -s $PWD/general/$i $HOME/$i
 done;
 
+ln -s $PWD/icons $HOME/Pictures/icons
 ln -s $PWD/.scripts $HOME/.scripts
 ln -s $PWD/.fonts $HOME/
 

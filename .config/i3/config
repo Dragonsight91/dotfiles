@@ -210,6 +210,16 @@ bindsym XF86Search exec --no-startup-id "rofi -show combi -combi-modi window,run
 # start a terminal
 bindsym $mod_main+Return exec kitty
 
+# print screen
+bindsym Print exec spectacle -bcm
+bindsym Shift+Print exec spectacle -bcr
+bindsym $alt+Print exec spectacle -bcu 
+
+# screen controls
+bindsym $mod_main+F1 exec "zsh -ic left-switch"
+bindsym $mod_main+F2 exec "zsh -ic frame-switch"
+bindsym $mod_main+F3 exec "zsh -ic right-switch"
+
 ########################################
 ### Media Keys and controls
 ########################################

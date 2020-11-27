@@ -1,0 +1,9 @@
+#!/bin/zsh
+if [[ `xrandr | grep $SCREEN_RIGHT -A 1 | tail -n 1` == *"*"* ]];
+then
+    notify-screen off $SCREEN_RIGHT
+    xrandr --output $SCREEN_RIGHT --off
+else
+    notify-screen on $SCREEN_RIGHT
+    xrandr --output $SCREEN_RIGHT --mode $SCREEN_RIGHT_MODE --rate 60 --right-of $SCREEN_CENTER
+fi

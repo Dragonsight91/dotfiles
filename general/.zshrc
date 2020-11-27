@@ -12,6 +12,19 @@ export ZSH="/home/${USER}/.oh-my-zsh"
 export LOOPBACK_MIC="alsa_input.pci-0000_00_1f.3.analog-stereo"
 export LOOPBACK_OUT="bluez_sink.00_16_94_38_24_8F.a2dp_sink"
 
+# screen names
+export SCREEN_LEFT="DVI-2-1"
+export SCREEN_RIGHT="DVI-2-0"
+export SCREEN_CENTER="DVI-D-0"
+
+#screen modes
+export SCREEN_LEFT_MODE="1920x1080"
+export SCREEN_RIGHT_MODE="1024x768"
+export SCREEN_CENTER_MODE=$SCREEN_LEFT_MODE
+
+# custom gtk crap
+export GTK_IM_MODULE=xim
+
 ######################
 ### PLUGIN LOADING ###
 ######################
@@ -47,7 +60,7 @@ export ARCHFLAGS="-arch x86_64"
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
 bindkey '^H' backward-kill-word
-bindkey '5~' kill-word
+bindkey '5^' kill-word
 
 ###################
 ###   ALIASES   ###
@@ -71,7 +84,7 @@ alias nani="echo 'おまえ は もう しんでいる';echo '何？'"
 alias sudo="sudo "
 alias spotify-adblock="LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify"
 alias zip="zip -r "
-alias rpi-ssh="ssh -l pi 192.168.20.11"
+alias rpi-ssh="ssh -l emma 192.168.20.11"
 
 ######################
 ### General  Setup ###

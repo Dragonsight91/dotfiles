@@ -16,11 +16,11 @@ i3lock \
     --timecolor=FF0083ff \
     --datecolor=00000000 \
     --greetercolor=FF0083ff \
-    --indpos='960:530' \
-    --timepos='960:540' \
+    --indpos='2880:530' \
+    --timepos='2880:540' \
     --timestr='%H:%M:%S' \
     --datestr='$USER' \
-    --datepos='960:550' \
+    --datepos='2880:550' \
     --time-font='monospace' \
     --timesize=40 \
     --radius=128 \
@@ -31,7 +31,7 @@ i3lock \
     --locktext='' \
     --lockfailedtext='' \
     --greetertext="$(get_quotes)" \
-    --greeterpos='960:900' \
+    --greeterpos='2880:900' \
     --indicator \
 	--pass-power-keys \
     --pass-media-keys \

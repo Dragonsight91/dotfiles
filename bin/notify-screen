@@ -1,0 +1,13 @@
+#!/bin/zsh
+MODE=$1
+ATTR=$2
+
+if [[ "$MODE" == "off" ]] || [[ "$MODE" == "on" ]]; then
+        notify-send --icon=/usr/share/icons/Arc/devices/128/cs-screen.png "Screen Notify" "Screen $2 was turned $1"
+elif [[ "$MODE" == "rate" ]]; then
+    if [[ "$ATTR" == "144" ]]; then
+        notify-send --icon=$HOME/Pictures/icons/pcmr_icon.png "PCMR MODE" "Main Screen running at ${ATTR}Hz"
+    else
+        notify-send --icon=$HOME/Pictures/icons/noob_icon.png "NOOB MODE" "Main Screen running at ${ATTR}Hz"
+    fi
+fi  
