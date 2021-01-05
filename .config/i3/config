@@ -175,6 +175,7 @@ assign [class="Pavucontrol"] $ws10
 assign [class=".*lueberry.py"] $ws10
 assign [class=".*arrier"] $ws10
 assign [class=".odem-manager-gui"] $ws10
+assign [class="pgadmin.*"] $ws10
 
 ###### SPECIAL WORKSPACES ######
 
@@ -198,7 +199,7 @@ bindsym $mod_main+Shift+c reload
 bindsym $mod_main+Shift+r restart
 
 # Lock i3
-bindsym $mod_main+l exec --no-startup-id lock
+bindsym $mod_main+l exec --no-startup-id "zsh -ic lock"
 
 # logout
 bindsym $mod_main+Shift+Escape exit
@@ -240,6 +241,7 @@ bindsym $mod_main+KP_Divide exec --no-startup-id pactl set-source-mute @DEFAULT_
 ## play/pause
 bindsym XF86AudioPause exec --no-startup-id playerctl pause
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioPlayPause exec --no-startup-id playerctl play-pause
 bindsym $mod_main+P exec playerctl play-pause
 
 ## next title
@@ -251,7 +253,6 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod_main+Next exec playerctl previous
 
 # other media keys
-bindsym XF86AudioPlayPause exec --no-startup-id playerctl play-pause
 bindsym XF86Mail exec --no-startup-id thunderbird
 bindsym XF86Messenger exec --no-startup-id telegram-desktop; exec --no-startup-id discord
 

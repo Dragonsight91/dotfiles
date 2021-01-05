@@ -84,7 +84,7 @@ alias nani="echo 'おまえ は もう しんでいる';echo '何？'"
 alias sudo="sudo "
 alias spotify-adblock="LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify"
 alias zip="zip -r "
-alias rpi-ssh="ssh -l emma 192.168.20.11"
+alias rpi-ssh="ssh -l emma -p 1337 89.190.141.162"
 
 ######################
 ### General  Setup ###

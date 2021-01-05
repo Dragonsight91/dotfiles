@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 if [[ `xrandr | grep $SCREEN_CENTER -A 1 | tail -n 1 | awk '{print $2}'` == *"*"* ]]; then
     notify-screen rate 144

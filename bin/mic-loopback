@@ -1,7 +1,7 @@
 #!/bin/bash
 
-mic=alsa_input.usb-Razer_Razer_Kraken_X_USB_00000000-00.analog-stereo
-spk=alsa_output.usb-Razer_Razer_Kraken_X_USB_00000000-00.analog-stereo
+mic=alsa_input.usb-Razer_Razer_Kraken_X_USB_00000000-00.iec958-stereo
+spk=alsa_output.usb-Razer_Razer_Kraken_X_USB_00000000-00.iec958-stereo
 
 echo "Creating virtual output devices"
 pactl load-module module-null-sink sink_name=vsink_in sink_properties=device.description=vsink_in
