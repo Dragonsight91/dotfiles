@@ -1,4 +1,4 @@
 # set background
-feh --bg-scale ~/Pictures/wallpapers/193824.jpg
+#feh --bg-scale [Your Image Here]
 # env
 export PATH="$NPM_PACKAGES/bin:$HOME/bin:$HOME/.local/bin:$HOME/.dotnet/tools:$PATH"
