@@ -106,7 +106,7 @@ The fonts used here sre not mine, but they are freely Available.
 
     # if you wanna install the grub theme, you will have to edit 
     # /etc/default/grub and set
-    # GRUB_THEME="/boot/grub/themes/grub-cyberpunk/theme.txt"
+    # GRUB_THEME="/boot/grub/themes/grub-nyarch/theme.txt"
     sudo nano /etc/default/grub
 
     # now just run the install script
@@ -145,6 +145,15 @@ The main modifier used is <kbd>Super</kbd>. this can be changed on the top of th
 - <kbd>Super + Shift + Q</kbd> - kill focused window
 - <kbd>Super + F</kbd> - toggle fullscreen
 - <kbd>Super + T</kbd> - toggle tabbed layout
+
+### Shortcut Commands - in zsh
+- i3-conf
+- kitty-conf
+- rofi-conf
+- zsh-conf
+- zsh-reload - restarts terminal
+- poweroof/fml - poweroff
+- nani
 
 ## How does this work?
 
@@ -201,7 +210,7 @@ This is a list of all applications and workspaces and where you can expect thing
 
 7. **Util**
 
-    All the utilitiesthat i occasionally use. this is kept seperate from image and video, because these are more general utilities which also don't like running in half-width windows.
+    All the utilities that i occasionally use. this is kept seperate from image and video, because these are more general utilities which also don't like running in half-width windows.
     - Virtual Box
     - obs
     - Filezilla
@@ -218,7 +227,14 @@ This is a list of all applications and workspaces and where you can expect thing
     Emails, that's it. just thunderbird. but i don't like thunderbird being half-width.
     - Thunderbird
     
-10. **Video**
+10. Misc
+
+    Stuff like pauvcontrol and network manager goes here
+    - pauvcontrol
+    - XFCE 4 Power Manager
+    - Network Manager
+
+11. **Video**
     
     This is a special workspace for video editing and playback software.
     This is the only workspace that doesn't use any number, but <kbd>+</kbd> as its identifier.
@@ -227,3 +243,11 @@ This is a list of all applications and workspaces and where you can expect thing
     - shotcut
     - kdenlive
     - blender
+
+## Config Notes
+
+Reminder that wallpapers are not included for desktop and login, edit .xprofile to change the desktop wallpaper and your DM for login screen.
+
+Some features may fail, make sure packages are installed correctly and check configs for possible errors.
+
+Check https://i3wm.org/docs/userguide.html for further help
