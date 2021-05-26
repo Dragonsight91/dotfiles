@@ -4,7 +4,7 @@
 
 
 ## Set Modifiers Mod4
-set $mod_main Mod1
+set $mod_main Mod4
 set $alt Control
 
 font pango:Source Code Pro 12
@@ -244,7 +244,6 @@ bindsym $mod_main+KP_Divide exec --no-startup-id pactl set-source-mute @DEFAULT_
 ## play/pause
 bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
-bindsym XF86AudioPlayPause exec --no-startup-id playerctl play-pause
 bindsym $mod_main+P exec playerctl play-pause
 
 ## next title
