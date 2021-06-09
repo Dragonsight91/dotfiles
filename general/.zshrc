@@ -38,11 +38,13 @@ plugins=(
 	zsh-syntax-highlighting
 )
 
-source $ZSH/oh-my-zsh.sh
+source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
 # load autojump
 [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 autoload -U compinit && compinit -u
+autoload colors
+colors
 
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
@@ -56,7 +58,7 @@ alias zsh-reload="source ~/.zshrc"
 alias zsh-conf="code ~/.zshrc"
 
 ### wm config stuff
-alias i3-conf="code ~/.config/i3/"
+alias i3-conf="code ~/.config/i3/config"
 alias kitty-conf="code ~/.config/kitty"
 alias rofi-conf="code ~/.config/rofi"
 
@@ -64,18 +66,20 @@ alias rofi-conf="code ~/.config/rofi"
 alias poweroof="poweroff"
 alias fml="poweroff"
 alias nani="echo 'おまえ は もう しんでいる';echo '何？'"
+alias die="$HOME/mysript.sh"
 
 ### general aliases
 alias sudo="sudo "
-alias spotify-adblock="LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify"
+alias spotify-adblock="LD_PRELOAD=/usr/lib/spotify-adblock.so spotify"
 alias zip="zip -r "
-alias weather='curl wttr.in/breinig\?qmM1'
+alias weather='curl wttr.in/Spotsylvania\?2'
 alias mnt_anime='mount -vvv -t nfs 192.168.1.90:/Anime /media/nfs0'
 ######################
 ### General  Setup ###
 ######################
 
-export DEFAULT_USER=emma
+export DEFAULT_USER=cos
+export PROMPT='%m %~ $'
 clear
 
 if [[ "${TERM}" = "xterm-256color" ]];
