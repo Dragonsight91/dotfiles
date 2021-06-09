@@ -7,14 +7,14 @@
 set $mod_main Mod4
 set $alt Control
 
-font pango:Source Code Pro 12
+font pango:Source Code Pro 11
 
 # General Window Behavior & design
 focus_on_window_activation focus
 for_window [class=".*"] border none
 no_focus [window_role="pop-up"]
 for_window [class=".*"] move center
-workspace_auto_back_and_forth no
+workspace_auto_back_and_forth yes
 floating_maximum_size 1000 x 9000
 
 # specific program behavior
@@ -23,8 +23,11 @@ for_window [class="Nemo"] floating enable
 exec --no-startup-id xss-lock --transfer-sleep-lock -- lock --nofork
 exec --no-startup-id picom -b
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
+exec --no-startup-id dunst
 exec --no-startup-id xbindkeys
+exec --no-startup-id blueman-tray
+exec --no-startup-id spotify
+exec --no-startup-id cool-retro-term
 
 # Define Screens
 set $screen_internal eDP1
@@ -37,24 +40,23 @@ set $screen_internal eDP1
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 	i3bar_command i3bar
-	status_command i3status
+	status_command py3status -c ~/.config/i3status/config
 	
     position bottom
 	strip_workspace_numbers yes
     separator_symbol " "
-    tray_output none
 
     colors {
-        background #145778
+        background #5C1478
         statusline #F9FAF9
-        separator  #145778
+        separator  #5C1478
 
 #                           border  backgr. text
-        focused_workspace  #2298d3 #2298d3 #EEE8D5
-        active_workspace   #2298d3 #ed74e1 #241b2f
-        inactive_workspace #2298d3 #71c7f2 #2f2f2f
-        binding_mode       #2298d3 #2C2C2C #EEE8D5
-        urgent_workspace   #6859ec #6859ec #EEE8D5
+        focused_workspace  #961ebb #b526e0 #EEE8D5
+        active_workspace   #961ebb #aa23d3 #241b2f
+        inactive_workspace #961ebb #9617bc #6f9bb4
+        binding_mode       #961ebb #2C2C2C #EEE8D5
+        urgent_workspace   #ec5991 #ff00ae #EEE8D5
     }
 }
 
@@ -65,7 +67,7 @@ bar {
 #############################
 
 # Set inner/outer gaps
-gaps inner 14
+gaps inner 4
 gaps outer -2
 
 # Theme colors
@@ -87,10 +89,10 @@ gaps outer -2
 ### Workspaces and Workspace Behavior
 ########################################
 
-set $ws1 1:Browser
-set $ws2 2:Editor
-set $ws3 3:Chat
-set $ws4 4:Terminal
+set $ws1 1:Terminal
+set $ws2 2:Chat
+set $ws3 3:Browser
+set $ws4 4:Editor
 set $ws5 5:Games
 set $ws6 6:Image
 set $ws7 7:Util
@@ -110,22 +112,22 @@ set $ws11 11:Video
 ########################################
 
 # Browser Workspace
-assign [class="firefox"] $ws1
-assign [class="Tor.*"] $ws1
+assign [class="firefox"] $ws3
+assign [class="Tor.*"] $ws3
 
 # Editor Workspace
-assign [class="Code"] $ws2
-assign [class="UE4Editor"] $ws2
+assign [class="code"] $ws4
+assign [class="UE4Editor"] $ws4
 
 # Chat Workspace
-assign [class="zoom"] $ws3
-assign [class="Telegram.*"] $ws3
-assign [class="discord"] $ws3
-assign [class="instagram.*"] $ws3
+assign [class="zoom"] $ws10
+assign [class="Telegram.*"] $ws2
+assign [class="discord"] $ws2
+assign [class="instagram.*"] $ws2
 
 # Terminal Workspace
-assign [class="kitty"] $ws4
-assign [class="urxvt"] $ws4
+assign [class="kitty"] $ws1
+assign [class="cool-retro-term"] $ws1
 
 # Games Workspace
 assign [class="Steam"] $ws5
@@ -189,10 +191,13 @@ bindsym $mod_main+Shift+Escape exec --no-startup-id i3-msg exit
 bindsym $mod_main+d exec --no-startup-id "rofi -show combi -combi-modi window,run"
 
 # start a terminal
-bindsym $mod_main+Return exec kitty
+bindsym $mod_main+Return exec cool-retro-term
 
 # start nemo
 bindsym $mod_main+Shift+f exec --no-startup-id nemo
+
+# start firefox
+bindsym $mod_main+n exec --no-startup-id firefox
 
 # print screen
 bindsym Print exec spectacle -bcm
@@ -228,6 +233,9 @@ bindsym XF86Mail exec --no-startup-id thunderbird
 bindsym XF86Messenger exec --no-startup-id telegram-desktop; exec --no-startup-id discord
 bindsym XF86Explorer exec --no-startup-id nemo
 bindsym XF86Search exec --no-startup-id "rofi -show combi -combi-modi window,run"
+
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +2%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 2%-
 
 # TODO: implement XF86LaunchA and XF86Tools 
 
