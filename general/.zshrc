@@ -6,9 +6,9 @@
 export ZSH="/usr/share/oh-my-zsh"
 
 # general user stuff
-export ID=92873481236524716398128273 	# some random number
-export MAIN_PC=emma@192.168.20.204 		# my main PC's SSH details
-export PI=192.168.1.99                  # raspberry pi local ip
+export ID='' 	# some random number
+export MAIN_PC='' 		# my main PC's SSH details
+export PI=''                # raspberry pi local ip
 # mic loopback script envvars
 export LOOPBACK_MIC="alsa_input.pci-0000_00_1f.3.analog-stereo"
 export LOOPBACK_OUT="bluez_sink.00_16_94_38_24_8F.a2dp_sink"
@@ -72,8 +72,8 @@ alias die="$HOME/mysript.sh"
 alias sudo="sudo "
 alias spotify-adblock="LD_PRELOAD=/usr/lib/spotify-adblock.so spotify"
 alias zip="zip -r "
-alias weather='curl wttr.in/Spotsylvania\?2'
-alias mnt_anime='mount -vvv -t nfs 192.168.1.90:/Anime /media/nfs0'
+alias weather='curl wttr.in\?2'
+alias mnt_anime=''
 ######################
 ### General  Setup ###
 ######################
@@ -81,11 +81,5 @@ alias mnt_anime='mount -vvv -t nfs 192.168.1.90:/Anime /media/nfs0'
 export DEFAULT_USER=cos
 export PROMPT='%m %~ $'
 clear
-
-if [[ "${TERM}" = "xterm-256color" ]];
-then
-    neofetch --ascii
-else
-    neofetch
-fi
+neofetch
 
