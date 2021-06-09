@@ -25,15 +25,16 @@ general {
 # To activate/deactivate a module, just comment/uncomment it 
 
 #order += "cpu_usage"                           # CPU Usage             ( show % usage )
-order += "memory"                               # Memory Usage          ( show amount used )
-order += "disk /"                               # Disk usage            ( show free space )
+#order += "memory"                               # Memory Usage          ( show amount used )
+#order += "disk /"                               # Disk usage            ( show free space )
 order += "ethernet _first_"                     # Ethernet Adapter      ( show IP )
 order += "wireless _first_"                     # WiFi Adapter          ( show IP )
-order += "wireless wwp0s20f0u3c3"               # WWAN adapter          ( no IP )
-order += "path_exists VPN"                      
+#order += "path_exists VPN"                      
 order += "battery 0"                            # Battery 0 Charge      ( show % charge )
 order += "battery 1"                            # Battery 1 Charge      ( show % charge )
+order += "spotify"
 order += "volume master"                        # Main Sink Volume      ( show Vol. % )
+order += "spotify weather"
 order += "tztime local"                         # Time and date         ( format: D d M h:m )
 
 
@@ -43,31 +44,33 @@ order += "tztime local"                         # Time and date         ( format
 
 # CPU Usage
 cpu_usage {
-        format = "<span background='#f04371' foreground='black'>  </span><span background='#71c7f2' foreground='#2f2f2f'>  %usage  </span> "
+        format = "<span background='#f04371' foreground='black'>  </span><span background='#ff64ff' foreground='#2f2f2f'>  %usage  </span> "
 }
 
 # RAM usage 
 memory {
-        format = "<span foreground='black' background='#eb5ee1' >  </span><span background='#71c7f2' foreground='#2f2f2f'> %used </span>"
+        format = "<span foreground='black' background='#eb5ee1' >  </span><span background='#ff64ff' foreground='#2f2f2f'> %used </span>"
 }
 
 # Disk Usage (root)
 disk "/" {
-        format = "<span background='#a3f7e4' foreground='black'>  </span><span background='#71c7f2' foreground='#2f2f2f'> %avail </span>"
+        format = "<span background='#a3f7e4' foreground='black'>  </span><span background='#ff64ff foreground='#2f2f2f'> %avail </span>"
 }
 
 # Ethernet port
 ethernet _first_ {
         # if you use %speed, i3status requires root privileges
-        format_up = "<span background='#6ef077' foreground='black'>  </span><span background='#71c7f2' foreground='#2f2f2f'> %ip </span>"
+        format_up = "<span background='#6ef077' foreground='black'>  </span><span background='#ff64ff' foreground='#2f2f2f'> %ip </span>"
         format_down = ""
 }
 
 # Wifi adapter
 wireless  _first_{
         # if you use %speed, i3status requires root privileges
-        format_up = "<span background='#6ef077' foreground='black'> 直 </span><span background='#71c7f2' foreground='#2f2f2f'> %ip </span>"
+        format_up = "<span background='#6ef077' foreground='black'> 直 </span><span background='#ff64ff' foreground='#2f2f2f'> %ip </span>"
         format_down = ""
+        on_click 1 = "exec nm-applet"
+        on_click 3 = "exec pkill nm-applet"
 }
 
 # LTE Module
@@ -96,12 +99,12 @@ path_exists VPN {
 tztime local {
         # format = "%Y-%m-%d %H:%M:%S"
         format_time = "%a %d %b %H:%M"
-        format = "<span background='#f3ff70' foreground='black'>  </span><span background='#71c7f2' foreground='#2f2f2f'> %time </span>"
+        format = "<span background='#f3ff70' foreground='black'>  </span><span background='#ff64ff' foreground='#2f2f2f'> %time </span>"
 }
 
 # Battery 0
 battery 0 {
-        format = "<span background='#6ef077' foreground='black'> %status </span><span background='#71c7f2' foreground='#2f2f2f'> %percentage </span>"
+        format = "<span background='#6ef077' foreground='black'> %status </span><span background='#ff64ff' foreground='#2f2f2f'> %percentage </span>"
         format_down = ""
         status_chr  = ""
         status_bat  = ""
@@ -115,7 +118,7 @@ battery 0 {
 
 # Battery 1 (if exists)
 battery 1 {
-        format = "<span background='#6ef077' foreground='black'> %status </span><span background='#71c7f2' foreground='#2f2f2f'> %percentage </span>"
+        format = "<span background='#6ef077' foreground='black'> %status </span><span background='#ff64ff' foreground='#2f2f2f'> %percentage </span>"
         format_down = ""
         status_chr  = ""
         status_bat  = ""
@@ -129,9 +132,27 @@ battery 1 {
 
 # Volume Display
 volume master {
-        format = "<span background='#6ef077' foreground='black'> 墳 </span><span background='#71c7f2' foreground='#2f2f2f'> %volume </span>"
+        format = "<span background='#6ef077' foreground='black'> 墳 </span><span background='#ff64ff' foreground='#2f2f2f'> %volume </span>"
         format_muted = "<span background='#f04371' foreground='black'> 婢 </span>"
         device = "pulse"
         mixer = "Master"
         mixer_idx = 0
+        on_click 1 = "exec cool-retro-term -e pulsemixer"
+}
+
+# Spotify
+spotify {
+        format = "<span background='#0abe13' foreground='black'>  </span><span background='#ff64ff' foreground='#2f2f2f'> {content} </span>"
+        content = shell(sp current-oneline)
+        on_click 1 = "exec sp play"
+        on_click 3 = "exec sp next"
+        request_timeout = 10
+}
+
+# wttr.in
+spotify weather {
+        format = "<span background='#6ef077' foreground='black'> {head} </span><span background='#ff64ff' foreground='#2f2f2f'> {content} </span>"
+        content = shell(curl wttr.in/Spotsylvania\?format=2 | cut -c4-100)
+        head = shell(curl wttr.in/Spotsylvania\?format=2 | cut -c1-3)
+        request_timeout = 10
 }
