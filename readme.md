@@ -1,12 +1,13 @@
-# Dragonsight91's Dotfiles
+# Cosmicom16's Dotfiles
+Forked from Dragonsight91's Dotfiles, so some things may seem exactly the same(especially when I upload the blue theme)/
 This is the repository and a manual on how to replicate my exact setup.
-The fonts used here sre not mine, but they are freely Available.
+The fonts used here are not mine, but they are freely Available.
 
 ## i3 Theme
-![A Screenshot with my dotfiles and background image](https://cdn.discordapp.com/attachments/793215955546800170/845230207714590750/unknown.png)
+[Picture Not Yet Availible]
 
 ## Grub-theme
-![A screenshot of my grub-theme](https://media.discordapp.net/attachments/793215955546800170/845008081561714738/unknown.png)
+[Picture Not Yet Availible]
 
 ## Dependencies
 
@@ -152,7 +153,8 @@ The main modifier used is <kbd>Super</kbd>. this can be changed on the top of th
 - rofi-conf
 - zsh-conf
 - zsh-reload - restarts terminal
-- poweroof/fml - poweroff
+- poweroof - poweroff
+- fml - poweroff
 - nani
 
 ## How does this work?
