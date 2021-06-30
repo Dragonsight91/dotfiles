@@ -50,7 +50,7 @@ export ARCHFLAGS="-arch x86_64"
 ###################
 ###   ALIASES   ###
 ###################
-
+source ~/.zshsecret
 ###  zsh aliases
 alias zsh-reload="source ~/.zshrc"
 alias zsh-conf="code ~/.zshrc"
@@ -69,8 +69,8 @@ alias nani="echo 'おまえ は もう しんでいる';echo '何？'"
 alias sudo="sudo "
 alias spotify-adblock="LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify"
 alias zip="zip -r "
-alias weather='curl wttr.in/breinig\?qmM1'
-alias mnt_anime='mount -vvv -t nfs 192.168.1.90:/Anime /media/nfs0'
+alias weather='curl wttr.in/houten\?qmM1'
+
 ######################
 ### General  Setup ###
 ######################
