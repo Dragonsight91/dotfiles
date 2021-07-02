@@ -5,14 +5,11 @@ dotnet-runtime-bin
 dotnet-sdk-bin
 dotnet-targeting-pack-bin
 i3lock-color
-intel-hybrid-codec-driver-gcc10
 libcmrt
 preloader-signed
 pulseaudio-modules-bt
-spotify
 texlive-pgfopts
 texlive-tikz-uml
-thinkfan
 ttf-symbola
 uuid
 visual-studio-code-bin

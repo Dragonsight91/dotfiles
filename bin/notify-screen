@@ -1,0 +1,15 @@
+#!/bin/bash
+MODE=$1
+ATTR=$2
+
+if [[ "$MODE" == "off" ]] || [[ "$MODE" == "on" ]]; then
+        notify-send --icon=/usr/share/icons/Arc/devices/128/cs-screen.png "Screen Notify" "Screen $ATTR was turned $MODE"
+elif [[ "$MODE" == "rate" ]]; then
+    if [[ "$ATTR" == "144" ]]; then
+        MODE=pcmr
+    else
+        MODE=noob
+    fi
+    echo "${MODE^^} MODE"
+    notify-send --icon="$HOME/Pictures/icons/${MODE}_icon.png" "${MODE^^} MODE" "Main Screen running at ${ATTR}Hz"
+fi
