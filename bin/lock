@@ -1,4 +1,10 @@
-#!/bin/bash
+#!/bin/zsh
+x_pos=$(( 1920 / 2 ))
+if [[ `xrandr | grep $SCREEN_LEFT -A 1 | tail -n 1` == *"*"* ]];
+then
+    x_pos=$(( 1920 + $x_pos ))
+fi
+
 i3lock \
     --blur=10 \
     --inside-color=000000a0 \
@@ -17,11 +23,11 @@ i3lock \
     --time-color=FF0083ff \
     --date-color=00000000 \
     --greeter-color=FF0083ff \
-    --ind-pos='960:530' \
-    --time-pos='960:540' \
+    --ind-pos="${x_pos}:530" \
+    --time-pos="${x_pos}:540" \
     --time-str='%H:%M:%S' \
     --date-str='$USER' \
-    --date-pos='960:550' \
+    --date-pos="${x_pos}:550" \
     --time-font='monospace' \
     --time-size=40 \
     --radius=128 \
@@ -31,8 +37,8 @@ i3lock \
     --noinput-text='' \
     --lock-text='' \
     --lockfailed-text='' \
-    --greeter-text="$(get_quotes)" \
-    --greeter-pos='960:900' \
+    --greeter-text="${get_quotes}" \
+    --greeter-pos="${x_pos}:900" \
     --indicator \
 	--pass-power-keys \
     --pass-media-keys \
