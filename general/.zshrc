@@ -5,10 +5,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/usr/share/oh-my-zsh"
 
-# general user stuff
-export ID='' 	# some random number
-export MAIN_PC='' 		# my main PC's SSH details
-export PI=''                # raspberry pi local ip
 # mic loopback script envvars
 export LOOPBACK_MIC="alsa_input.pci-0000_00_1f.3.analog-stereo"
 export LOOPBACK_OUT="bluez_sink.00_16_94_38_24_8F.a2dp_sink"
@@ -52,7 +48,7 @@ export ARCHFLAGS="-arch x86_64"
 ###################
 ###   ALIASES   ###
 ###################
-
+source ~/.zshsecret
 ###  zsh aliases
 alias zsh-reload="source ~/.zshrc"
 alias zsh-conf="code ~/.zshrc"
@@ -72,8 +68,8 @@ alias die="$HOME/mysript.sh"
 alias sudo="sudo "
 alias spotify-adblock="LD_PRELOAD=/usr/lib/spotify-adblock.so spotify"
 alias zip="zip -r "
-alias weather='curl wttr.in\?2'
-alias mnt_anime=''
+alias weather='curl wttr.in/houten\?qmM1'
+
 ######################
 ### General  Setup ###
 ######################

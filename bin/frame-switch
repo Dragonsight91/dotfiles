@@ -1,0 +1,11 @@
+#!/bin/zsh
+if [[ `xrandr | grep $SCREEN_CENTER -A 1 | tail -n 1 | awk '{print $2}'` == *"*"* ]]; then
+    notify-screen rate 144
+    xrandr --output $SCREEN_CENTER --mode $SCREEN_CENTER_MODE --rate 144
+    exit
+else
+    notify-screen rate 60
+    xrandr --output $SCREEN_CENTER --mode $SCREEN_CENTER_MODE --rate 60
+    exit
+fi
+

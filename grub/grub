@@ -2,8 +2,8 @@
 
 GRUB_DEFAULT=0
 GRUB_TIMEOUT=5
-GRUB_DISTRIBUTOR="Arch"
-GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 rd.udev.log_level=3 splash cryptdevice=UUID=someuuid:cryptlvm cryptkey=rootfs:/root/cryptlvm.keyfile resume=UUID=someuuuid"
+GRUB_DISTRIBUTOR="Nyarch Linyux"
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 rd.udev.log_level=3 splash"
 GRUB_CMDLINE_LINUX=""
 
 # Preload both GPT and MBR modules so that they are not missed

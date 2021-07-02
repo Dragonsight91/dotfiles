@@ -30,7 +30,9 @@ exec --no-startup-id spotify
 exec --no-startup-id cool-retro-term
 
 # Define Screens
-set $screen_internal eDP1
+set $screen_left HDMI-A-0
+set $screen_right HDMI-A-1
+set $screen_center DisplayPort-1
 
 
 ########################################
@@ -105,7 +107,23 @@ set $ws11 11:Video
 ### Workspace <-> Monitor Bindings
 ########################################
 
-# TODO: create dock bindings
+
+## left Monitor
+workspace $ws1 output $screen_left
+workspace $ws4 output $screen_left
+workspace $ws7 output $screen_left
+workspace $ws8 output $screen_left
+
+## center Monitor
+workspace $ws2 output $screen_center
+workspace $ws5 output $screen_center
+workspace $ws6 output $screen_center
+workspace $ws11 output $screen_center
+
+## right Monitor
+workspace $ws3 output $screen_right
+workspace $ws9 output $screen_right
+workspace $ws10 output $screen_right
 
 ########################################
 ### Window <-> Workspace Bindings
@@ -132,6 +150,7 @@ assign [class="cool-retro-term"] $ws1
 # Games Workspace
 assign [class="Steam"] $ws5
 assign [class=".inecraft.*"] $ws5
+assign [class="SaintsRow3.*"] $ws5
 
 # Image Workspace
 assign [class="Gimp"] $ws6
@@ -159,6 +178,7 @@ assign [class=".odem-manager-gui"] $ws10
 assign [class=".lueman.*"] $ws10
 assign [class=".*power-manager.*"] $ws10
 assign [class="Nm-connection.*"] $ws10
+assign [class="pgadmin.*"] $ws10
 
 ###### SPECIAL WORKSPACES ######
 
@@ -204,6 +224,11 @@ bindsym Print exec spectacle -bcm
 bindsym Shift+Print exec spectacle -bcr
 bindsym $alt+Print exec spectacle -bcu 
 
+# screen controls
+bindsym $mod_main+F1 exec "zsh -ic left-switch"
+bindsym $mod_main+F2 exec "zsh -ic frame-switch"
+bindsym $mod_main+F3 exec "zsh -ic right-switch"
+
 ########################################
 ### Media Keys and controls
 ########################################
@@ -213,6 +238,12 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+## no media keys? (I have a Model M, no fancy media keys :p)
+bindsym $mod_main+KP_Add exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym $mod_main+KP_Subtract exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym $mod_main+KP_Multiply exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym $mod_main+KP_Divide exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # music controls
 ## play/pause
@@ -234,11 +265,11 @@ bindsym XF86Messenger exec --no-startup-id telegram-desktop; exec --no-startup-i
 bindsym XF86Explorer exec --no-startup-id nemo
 bindsym XF86Search exec --no-startup-id "rofi -show combi -combi-modi window,run"
 
+
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +2%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 2%-
 
 # TODO: implement XF86LaunchA and XF86Tools 
-
 ########################################
 ### Workspace Keybinds 
 ########################################
