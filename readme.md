@@ -1,6 +1,6 @@
 # Dragonsight91's Dotfiles
 This is the repository and a manual on how to replicate my exact setup.
-The fonts used here sre not mine, but they are freely Available.
+The fonts used here are not mine, but they are freely Available.
 
 ## i3 Theme
 ![A Screenshot with my dotfiles and background image](https://cdn.discordapp.com/attachments/793215955546800170/845230207714590750/unknown.png)
@@ -166,6 +166,7 @@ This is a list of all applications and workspaces and where you can expect thing
 0. **Misc**
     
     This workspace is mostly for settings and config applications
+    Stuff like pauvcontrol and network manager goes here
     - pavucontrol
     - barrier
     - blueberry
@@ -226,15 +227,9 @@ This is a list of all applications and workspaces and where you can expect thing
 
     Emails, that's it. just thunderbird. but i don't like thunderbird being half-width.
     - Thunderbird
-    
-10. Misc
 
-    Stuff like pauvcontrol and network manager goes here
-    - pauvcontrol
-    - XFCE 4 Power Manager
-    - Network Manager
 
-11. **Video**
+10. **Video**
     
     This is a special workspace for video editing and playback software.
     This is the only workspace that doesn't use any number, but <kbd>+</kbd> as its identifier.
