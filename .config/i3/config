@@ -4,7 +4,7 @@
 
 
 ## Set Modifiers Mod4
-set $mod_main Mod4
+set $mod_main Mod1
 set $alt Control
 
 font pango:Source Code Pro 12
