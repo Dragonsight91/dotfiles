@@ -99,7 +99,11 @@ set $ws7 7:Util
 set $ws8 8:Music
 set $ws9 9:Email
 set $ws10 10:Misc
+
+# alt workspaces
 set $ws11 11:Video
+set $ws12 12:Terminal
+set $ws13 13:Browser
 
 ########################################
 ### Workspace <-> Monitor Bindings
@@ -116,7 +120,12 @@ workspace $ws8 output $screen_left
 workspace $ws2 output $screen_center
 workspace $ws5 output $screen_center
 workspace $ws6 output $screen_center
+
+# supplementary WS 
 workspace $ws11 output $screen_center
+workspace $ws12 output $screen_center
+workspace $ws13 output $screen_center
+
 
 ## right Monitor
 workspace $ws3 output $screen_right
@@ -277,6 +286,11 @@ bindsym $mod_main+9 workspace $ws9
 bindsym $mod_main+0 workspace $ws10
 bindsym $mod_main+plus workspace $ws11
 
+# switch to supplementary
+bindsym $mod_main+$alt+plus workspace $ws11
+bindsym $mod_main+$alt+1 workspace $ws12
+bindsym $mod_main+$alt+2 workspace $ws13
+
 # move focused container to workspace
 bindsym $mod_main+Shift+1 move container to workspace $ws1; workspace $ws1
 bindsym $mod_main+Shift+2 move container to workspace $ws2; workspace $ws2
@@ -288,7 +302,12 @@ bindsym $mod_main+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod_main+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym $mod_main+Shift+9 move container to workspace $ws9; workspace $ws9
 bindsym $mod_main+Shift+0 move container to workspace $ws10; workspace $ws10
-bindsym $mod_main+Shift+plus move container to workspace $ws11; workspace $ws11
+
+# move to supplementary
+bindsym $mod_main+Shift+$alt+plus move container to workspace $ws11; workspace $ws11
+bindsym $mod_main+Shift+$alt+1 move container to workspace $ws12; workspace $ws12
+bindsym $mod_main+Shift+$alt+2 move container to workspace $ws13; workspace $ws13
+
 
 ########################################
 ### Window  controls

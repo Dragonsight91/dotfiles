@@ -1,0 +1,40 @@
+#!/bin/bash
+list=(
+    "Anime"
+    "Music"
+    "Movies"
+    "TV_Shows"
+    "Images"
+    "Hentai"
+    "Unsorted"
+    "Emma"
+)
+
+NAS_IP=192.168.1.90
+
+
+
+for i in "${list[@]}"; do
+    if [ "$1" == "mount" ];
+    then
+        echo "mounting $i"
+        mount -vvv -t nfs "$NAS_IP:/$i" "/media/nfs/$i"
+        echo
+    elif [ "$1" == "umount" ];
+    then
+        umount "/media/nfs/$i"
+   elif [ "$1" == "dry" ];
+   then
+        echo "would (un)mount and/or create: $NAS_IP:/$i at /media/nfs/$i"
+   elif [ "$1" == "mkdir" ]
+   then
+        echo "Creating mountpoint $i"
+        mkdir -p -v -m a+rwx "/media/nfs/$i"
+   else
+        echo nope
+        break
+   fi
+done
+
+
+

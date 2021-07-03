@@ -1,0 +1,49 @@
+#!/bin/bash
+
+part1="$1"
+part2="$2"
+seq_start="$3"
+seq_end="$4"
+flag="$5"
+off=$(( $seq_start-1 ))
+err=0
+
+if [[ ! -n $part1 ]] || [[ ! -n $part2 ]]; then
+    echo "please specify the part bfore and after the number"
+    err=1
+fi
+
+case $seq_start in
+    ''|*[!0-9]*)
+        echo "please only use numbers for seq_start"
+        err=1
+    ;;
+    *) err=0 ;;
+esac
+
+case $seq_end in
+    ''|*[!0-9]*)
+        echo "please only use numbers for seq_end"
+        err=1
+    ;;
+    *);;
+esac
+
+if [[ err -eq 1 ]]; then exit; fi
+
+if [[ $flag == "--dry" ]]; 
+then
+    echo -e "Dry run results:\n ";
+else
+    off=$5 || $off;
+    flag=$6
+    if [[ $flag == "--dry" ]]; then echo -e "Dry run results:\n "; fi
+fi
+
+for i in `seq $seq_start $seq_end`; do
+    if [ "$flag" == "--dry" ]; then
+        echo "${part1}${i}${part2}" ">" "${part1}$(( $i - $off ))${part2}"
+    else
+        mv "${part1}${i}$part2" "${part1}$(( $i - $off ))$part2"
+    fi
+done
